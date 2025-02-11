@@ -1,0 +1,975 @@
+{
+    "version": "6.1",
+    "routing_model": {
+        "WELCOME": [
+            "INFORMANT_DETAILS",
+            "SERVICE_DETAILS"
+        ],
+        "INFORMANT_DETAILS": [
+            "SERVICE_DETAILS"
+        ],
+        "SERVICE_DETAILS": []
+    },
+    "data_api_version": "3.0",
+    "screens": [
+        {
+            "data": {
+                "genderList": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "__example__": [
+                        {
+                            "id": "1",
+                            "title": "Male"
+                        }
+                    ]
+                },
+                "districtList": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "__example__": [
+                        {
+                            "id": "31",
+                            "title": "Nagpur"
+                        }
+                    ]
+                },
+                "mandalList": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "__example__": [
+                        {
+                            "id": "1",
+                            "title": "Mandal Name"
+                        }
+                    ]
+                },
+                "isMandalVisible": {
+                    "type": "boolean",
+                    "__example__": false
+                },
+                "villageList": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "__example__": [
+                        {
+                            "id": "11",
+                            "title": "Bramhapuri"
+                        }
+                    ]
+                },
+                "isVillageVisible": {
+                    "type": "boolean",
+                    "__example__": false
+                },
+                "mobileNoInitValue": {
+                    "type": "string",
+                    "__example__": "7020232834"
+                },
+                "nameInitValue": {
+                    "type": "string",
+                    "__example__": "Mayur"
+                },
+                "surnameInitValue": {
+                    "type": "string",
+                    "__example__": "Dhakite"
+                },
+                "districtErrorBody": {
+                    "type": "string",
+                    "__example__": "Error in First Screen"
+                },
+                "isDistrictErrorVisible": {
+                    "type": "boolean",
+                    "__example__": false
+                },
+                "pinCodeInitValue": {
+                    "type": "string",
+                    "__example__": "441206"
+                },
+                "extraDetails": {
+                    "type": "string",
+                    "__example__": ""
+                }
+            },
+            "id": "WELCOME",
+            "title": "Welcome",
+            "layout": {
+                "type": "SingleColumnLayout",
+                "children": [
+                    {
+                        "type": "Form",
+                        "name": "form",
+                        "children": [
+                            {
+                                "text": "Missing/Lost Documents Application",
+                                "visible": true,
+                                "type": "TextHeading"
+                            },
+                            {
+                                "label": "Name",
+                                "name": "name",
+                                "required": true,
+                                "min-chars": 4,
+                                "max-chars": 49,
+                                "type": "TextInput"
+                            },
+                            {
+                                "label": "Surname",
+                                "name": "surname",
+                                "required": true,
+                                "type": "TextInput"
+                            },
+                            {
+                                "label": "Gender",
+                                "name": "gender",
+                                "data-source": "${data.genderList}",
+                                "required": true,
+                                "type": "Dropdown"
+                            },
+                            {
+                                "label": "Age",
+                                "name": "age",
+                                "required": true,
+                                "input-type": "number",
+                                "min-chars": 1,
+                                "max-chars": 2,
+                                "type": "TextInput"
+                            },
+                            {
+                                "label": "Occupation",
+                                "name": "occupation",
+                                "required": true,
+                                "min-chars": 4,
+                                "max-chars": 29,
+                                "type": "TextInput"
+                            },
+                            {
+                                "label": "Address Line 1",
+                                "name": "addressLine1",
+                                "required": true,
+                                "max-length": 99,
+                                "type": "TextArea"
+                            },
+                            {
+                                "label": "Address Line 2",
+                                "name": "addressLine2",
+                                "required": true,
+                                "max-length": 99,
+                                "type": "TextArea"
+                            },
+                            {
+                                "label": "State/UT",
+                                "name": "state",
+                                "data-source": [
+                                    {
+                                        "id": "Andhrapradesh",
+                                        "title": "Andhrapradesh"
+                                    }
+                                ],
+                                "required": true,
+                                "type": "Dropdown"
+                            },
+                            {
+                                "label": "District",
+                                "name": "district",
+                                "data-source": "${data.districtList}",
+                                "required": true,
+                                "enabled": true,
+                                "on-select-action": {
+                                    "name": "data_exchange",
+                                    "payload": {
+                                        "name": "${form.name}",
+                                        "surname": "${form.surname}",
+                                        "gender": "${form.gender}",
+                                        "age": "${form.age}",
+                                        "occupation": "${form.occupation}",
+                                        "addressLine1": "${form.addressLine1}",
+                                        "addressLine2": "${form.addressLine2}",
+                                        "state": "${form.state}",
+                                        "district": "${form.district}",
+                                        "mandal": "${form.mandal}",
+                                        "village": "${form.village}",
+                                        "city": "${form.city}",
+                                        "pinCode": "${form.pinCode}",
+                                        "mobileNumber": "${form.mobileNumber}",
+                                        "phoneNo": "${form.phoneNo}",
+                                        "emailId": "${form.emailId}",
+                                        "extraDetails": "${data.extraDetails}",
+                                        "onSelectAction": "on-district-click"
+                                    }
+                                },
+                                "type": "Dropdown"
+                            },
+                            {
+                                "label": "Mandal",
+                                "name": "mandal",
+                                "data-source": "${data.mandalList}",
+                                "required": true,
+                                "visible": "${data.isMandalVisible}",
+                                "on-select-action": {
+                                    "name": "data_exchange",
+                                    "payload": {
+                                        "name": "${form.name}",
+                                        "surname": "${form.surname}",
+                                        "gender": "${form.gender}",
+                                        "age": "${form.age}",
+                                        "occupation": "${form.occupation}",
+                                        "addressLine1": "${form.addressLine1}",
+                                        "addressLine2": "${form.addressLine2}",
+                                        "state": "${form.state}",
+                                        "district": "${form.district}",
+                                        "mandal": "${form.mandal}",
+                                        "village": "${form.village}",
+                                        "city": "${form.city}",
+                                        "pinCode": "${form.pinCode}",
+                                        "mobileNumber": "${form.mobileNumber}",
+                                        "phoneNo": "${form.phoneNo}",
+                                        "emailId": "${form.emailId}",
+                                        "extraDetails": "${data.extraDetails}",
+                                        "onSelectAction": "on-mandal-click"
+                                    }
+                                },
+                                "type": "Dropdown"
+                            },
+                            {
+                                "label": "Village",
+                                "name": "village",
+                                "data-source": "${data.villageList}",
+                                "required": true,
+                                "visible": "${data.isVillageVisible}",
+                                "type": "Dropdown"
+                            },
+                            {
+                                "text": "${data.districtErrorBody}",
+                                "visible": "${data.isDistrictErrorVisible}",
+                                "type": "TextBody"
+                            },
+                            {
+                                "label": "City",
+                                "name": "city",
+                                "required": true,
+                                "min-chars": 4,
+                                "max-chars": 29,
+                                "type": "TextInput"
+                            },
+                            {
+                                "label": "Pin Code",
+                                "name": "pinCode",
+                                "required": true,
+                                "input-type": "number",
+                                "min-chars": 6,
+                                "max-chars": 6,
+                                "type": "TextInput"
+                            },
+                            {
+                                "label": "Mobile Number",
+                                "name": "mobileNumber",
+                                "required": true,
+                                "min-chars": 10,
+                                "max-chars": 10,
+                                "input-type": "number",
+                                "type": "TextInput"
+                            },
+                            {
+                                "label": "Phone No.",
+                                "input-type": "phone",
+                                "min-chars": 11,
+                                "max-chars": 11,
+                                "name": "phoneNo",
+                                "type": "TextInput"
+                            },
+                            {
+                                "label": "Email ID",
+                                "name": "emailId",
+                                "input-type": "email",
+                                "type": "TextInput"
+                            },
+                            {
+                                "label": "Continue",
+                                "on-click-action": {
+                                    "name": "data_exchange",
+                                    "payload": {
+                                        "name": "${form.name}",
+                                        "surname": "${form.surname}",
+                                        "gender": "${form.gender}",
+                                        "age": "${form.age}",
+                                        "occupation": "${form.occupation}",
+                                        "addressLine1": "${form.addressLine1}",
+                                        "addressLine2": "${form.addressLine2}",
+                                        "state": "${form.state}",
+                                        "district": "${form.district}",
+                                        "mandal": "${form.mandal}",
+                                        "village": "${form.village}",
+                                        "city": "${form.city}",
+                                        "pinCode": "${form.pinCode}",
+                                        "mobileNumber": "${form.mobileNumber}",
+                                        "phoneNo": "${form.phoneNo}",
+                                        "emailId": "${form.emailId}",
+                                        "extraDetails": "${data.extraDetails}"
+                                    }
+                                },
+                                "type": "Footer"
+                            }
+                        ],
+                        "init-values": {
+                            "name": "${data.nameInitValue}",
+                            "surname": "${data.surnameInitValue}",
+                            "state": "Andhrapradesh",
+                            "pinCode": "${data.pinCodeInitValue}",
+                            "mobileNumber": "${data.mobileNoInitValue}",
+                            "phoneNo": ""
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "data": {
+                "name": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "surname": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "gender": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "age": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "occupation": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "addressLine1": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "addressLine2": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "state": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "district": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "mandal": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "village": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "city": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "pinCode": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "mobileNumber": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "phoneNo": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "emailId": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "extraDetails": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "ralationshipWithApplicantList": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "__example__": [
+                        {
+                            "id": "Father",
+                            "title": "Father"
+                        }
+                    ]
+                },
+                "secondScreenErrorBody": {
+                    "type": "string",
+                    "__example__": "Error in Second Screen"
+                },
+                "showSecondScreenError": {
+                    "type": "boolean",
+                    "__example__": false
+                }
+            },
+            "id": "INFORMANT_DETAILS",
+            "title": "Informant Details",
+            "layout": {
+                "type": "SingleColumnLayout",
+                "children": [
+                    {
+                        "type": "Form",
+                        "name": "form",
+                        "children": [
+                            {
+                                "text": "Informants Details",
+                                "visible": true,
+                                "type": "TextHeading"
+                            },
+                            {
+                                "label": "Informant Name",
+                                "name": "informantName",
+                                "required": true,
+                                "min-chars": 3,
+                                "max-chars": 49,
+                                "type": "TextInput"
+                            },
+                            {
+                                "label": "Informant Surname",
+                                "name": "informantSurname",
+                                "required": true,
+                                "min-chars": 3,
+                                "max-chars": 50,
+                                "type": "TextInput"
+                            },
+                            {
+                                "label": "Relationship With Applicant",
+                                "name": "relationshipWithApplicant",
+                                "required": true,
+                                "data-source": "${data.ralationshipWithApplicantList}",
+                                "type": "Dropdown"
+                            },
+                            {
+                                "text": "${data.secondScreenErrorBody}",
+                                "visible": "${data.showSecondScreenError}",
+                                "type": "TextBody"
+                            },
+                            {
+                                "on-click-action": {
+                                    "name": "data_exchange",
+                                    "payload": {
+                                        "name": "${data.name}",
+                                        "surname": "${data.surname}",
+                                        "gender": "${data.gender}",
+                                        "age": "${data.age}",
+                                        "occupation": "${data.occupation}",
+                                        "addressLine1": "${data.addressLine1}",
+                                        "addressLine2": "${data.addressLine2}",
+                                        "state": "${data.state}",
+                                        "district": "${data.district}",
+                                        "mandal": "${data.mandal}",
+                                        "village": "${data.village}",
+                                        "city": "${data.city}",
+                                        "pinCode": "${data.pinCode}",
+                                        "mobileNumber": "${data.mobileNumber}",
+                                        "phoneNo": "${data.phoneNo}",
+                                        "emailId": "${data.emailId}",
+                                        "extraDetails": "${data.extraDetails}",
+                                        "informantName": "${form.informantName}",
+                                        "informantSurname": "${form.informantSurname}",
+                                        "relationshipWithApplicant": "${form.relationshipWithApplicant}"
+                                    }
+                                },
+                                "label": "Continue",
+                                "type": "Footer"
+                            }
+                        ],
+                        "init-values": {
+                            "name": "${data.nameInitValue}",
+                            "surname": "${data.surnameInitValue}",
+                            "state": "Andhrapradesh",
+                            "pinCode": "${data.pinCodeInitValue}",
+                            "mobileNumber": "${data.mobileNoInitValue}",
+                            "phoneNo": ""
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "data": {
+                "informantName": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "informantSurname": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "relationshipWithApplicant": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "name": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "surname": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "gender": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "age": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "occupation": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "addressLine1": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "addressLine2": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "state": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "district": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "mandal": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "village": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "city": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "pinCode": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "mobileNumber": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "phoneNo": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "emailId": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "extraDetails": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "missingDocumentList": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "__example__": [
+                        {
+                            "id": "1",
+                            "title": "Aadhaar Card"
+                        }
+                    ]
+                },
+                "districtCommissionerateList": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "__example__": [
+                        {
+                            "id": "12",
+                            "title": "CHITOOR"
+                        }
+                    ]
+                },
+                "idProofToBeUploadedList": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "__example__": [
+                        {
+                            "id": "Driviing_licence",
+                            "title": "Driving License"
+                        }
+                    ]
+                },
+                "addressProofToBeUploaded": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "__example__": [
+                        {
+                            "id": "2313",
+                            "title": "Affidavit/Notary/Paper Advertisement"
+                        }
+                    ]
+                },
+                "isPoliceStationVisible": {
+                    "type": "boolean",
+                    "__example__": false
+                },
+                "policeStationList": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "__example__": [
+                        {
+                            "id": "312",
+                            "title": "Alluru Sitarama Raju"
+                        }
+                    ]
+                },
+                "nearestLandmarkAreaVisible": {
+                    "type": "boolean",
+                    "__example__": false
+                },
+                "errorBody": {
+                    "type": "string",
+                    "__example__": "Error in script"
+                },
+                "errorBodyVisible": {
+                    "type": "boolean",
+                    "__example__": false
+                },
+                "isPoliceJuriButtonVisible": {
+                    "type": "boolean",
+                    "__example__": false
+                }
+            },
+            "id": "SERVICE_DETAILS",
+            "title": "Service Details",
+            "layout": {
+                "type": "SingleColumnLayout",
+                "children": [
+                    {
+                        "type": "Form",
+                        "name": "form",
+                        "children": [
+                            {
+                                "text": "Service Details",
+                                "visible": true,
+                                "type": "TextHeading"
+                            },
+                            {
+                                "label": "Missing/ Lost Document / Article ",
+                                "name": "missingDocument",
+                                "data-source": "${data.missingDocumentList}",
+                                "required": true,
+                                "type": "Dropdown"
+                            },
+                            {
+                                "label": "District/Commissionerate",
+                                "name": "districtCommissionerate",
+                                "data-source": "${data.districtCommissionerateList}",
+                                "required": true,
+                                "on-select-action": {
+                                    "name": "data_exchange",
+                                    "payload": {
+                                        "informantName": "${data.informantName}",
+                                        "informantSurname": "${data.informantSurname}",
+                                        "relationshipWithApplicant": "${data.relationshipWithApplicant}",
+                                        "name": "${data.name}",
+                                        "surname": "${data.surname}",
+                                        "gender": "${data.gender}",
+                                        "age": "${data.age}",
+                                        "occupation": "${data.occupation}",
+                                        "addressLine1": "${data.addressLine1}",
+                                        "addressLine2": "${data.addressLine2}",
+                                        "state": "${data.state}",
+                                        "district": "${data.district}",
+                                        "mandal": "${data.mandal}",
+                                        "village": "${data.village}",
+                                        "city": "${data.city}",
+                                        "pinCode": "${data.pinCode}",
+                                        "mobileNumber": "${data.mobileNumber}",
+                                        "phoneNo": "${data.phoneNo}",
+                                        "emailId": "${data.emailId}",
+                                        "extraDetails": "${data.extraDetails}",
+                                        "missingDocument": "${form.missingDocument}",
+                                        "districtCommissionerate": "${form.districtCommissionerate}",
+                                        "policeStationJurisdictionKnown": "${form.policeStationJurisdictionKnown}",
+                                        "policeStation": "${form.policeStation}",
+                                        "nearestLandmarkArea": "${form.nearestLandmarkArea}",
+                                        "reasonForMissingDocument": "${form.reasonForMissingDocument}",
+                                        "idProofToBeUploaded": "${form.idProofToBeUploaded}",
+                                        "addressProofToBeUploaded": "${form.addressProofToBeUploaded}",
+                                        "deliveryType": "${form.deliveryType}",
+                                        "onSelectAction": "on-district-click"
+                                    }
+                                },
+                                "type": "Dropdown"
+                            },
+                            {
+                                "label": "Police Station Jurisdiction Known",
+                                "name": "policeStationJurisdictionKnown",
+                                "data-source": [
+                                    {
+                                        "id": "Yes",
+                                        "title": "Yes"
+                                    },
+                                    {
+                                        "id": "No",
+                                        "title": "No"
+                                    }
+                                ],
+                                "required": true,
+                                "on-select-action": {
+                                    "name": "data_exchange",
+                                    "payload": {
+                                        "informantName": "${data.informantName}",
+                                        "informantSurname": "${data.informantSurname}",
+                                        "relationshipWithApplicant": "${data.relationshipWithApplicant}",
+                                        "name": "${data.name}",
+                                        "surname": "${data.surname}",
+                                        "gender": "${data.gender}",
+                                        "age": "${data.age}",
+                                        "occupation": "${data.occupation}",
+                                        "addressLine1": "${data.addressLine1}",
+                                        "addressLine2": "${data.addressLine2}",
+                                        "state": "${data.state}",
+                                        "district": "${data.district}",
+                                        "mandal": "${data.mandal}",
+                                        "village": "${data.village}",
+                                        "city": "${data.city}",
+                                        "pinCode": "${data.pinCode}",
+                                        "mobileNumber": "${data.mobileNumber}",
+                                        "phoneNo": "${data.phoneNo}",
+                                        "emailId": "${data.emailId}",
+                                        "extraDetails": "${data.extraDetails}",
+                                        "missingDocument": "${form.missingDocument}",
+                                        "districtCommissionerate": "${form.districtCommissionerate}",
+                                        "policeStationJurisdictionKnown": "${form.policeStationJurisdictionKnown}",
+                                        "policeStation": "${form.policeStation}",
+                                        "nearestLandmarkArea": "${form.nearestLandmarkArea}",
+                                        "reasonForMissingDocument": "${form.reasonForMissingDocument}",
+                                        "idProofToBeUploaded": "${form.idProofToBeUploaded}",
+                                        "addressProofToBeUploaded": "${form.addressProofToBeUploaded}",
+                                        "deliveryType": "${form.deliveryType}",
+                                        "onSelectAction": "ps-juri-click"
+                                    }
+                                },
+                                "visible": "${data.isPoliceJuriButtonVisible}",
+                                "type": "RadioButtonsGroup"
+                            },
+                            {
+                                "text": "${data.errorBody}",
+                                "visible": "${data.errorBodyVisible}",
+                                "font-weight": "italic",
+                                "strikethrough": false,
+                                "type": "TextBody"
+                            },
+                            {
+                                "label": "Police Station",
+                                "name": "policeStation",
+                                "required": true,
+                                "visible": "${data.isPoliceStationVisible}",
+                                "data-source": "${data.policeStationList}",
+                                "type": "Dropdown"
+                            },
+                            {
+                                "label": "Nearest Landmark/ Area Description",
+                                "name": "nearestLandmarkArea",
+                                "required": true,
+                                "visible": "${data.nearestLandmarkAreaVisible}",
+                                "type": "TextArea"
+                            },
+                            {
+                                "label": "Reason For Missing Document/Article",
+                                "name": "reasonForMissingDocument",
+                                "required": true,
+                                "max-length": 200,
+                                "type": "TextArea"
+                            },
+                            {
+                                "label": "ID Proof to be Uploaded",
+                                "name": "idProofToBeUploaded",
+                                "data-source": "${data.idProofToBeUploadedList}",
+                                "required": true,
+                                "type": "Dropdown"
+                            },
+                            {
+                                "label": "Address Proof to be Uploaded",
+                                "name": "addressProofToBeUploaded",
+                                "data-source": "${data.addressProofToBeUploaded}",
+                                "required": true,
+                                "type": "Dropdown"
+                            },
+                            {
+                                "label": "Delivery Type",
+                                "name": "deliveryType",
+                                "data-source": [
+                                    {
+                                        "id": "Manual",
+                                        "title": "Manual"
+                                    }
+                                ],
+                                "required": true,
+                                "type": "Dropdown"
+                            },
+                            {
+                                "on-click-action": {
+                                    "name": "complete",
+                                    "payload": {
+                                        "informantName": "${data.informantName}",
+                                        "informantSurname": "${data.informantSurname}",
+                                        "relationshipWithApplicant": "${data.relationshipWithApplicant}",
+                                        "name": "${data.name}",
+                                        "surname": "${data.surname}",
+                                        "gender": "${data.gender}",
+                                        "age": "${data.age}",
+                                        "occupation": "${data.occupation}",
+                                        "addressLine1": "${data.addressLine1}",
+                                        "addressLine2": "${data.addressLine2}",
+                                        "state": "${data.state}",
+                                        "district": "${data.district}",
+                                        "mandal": "${data.mandal}",
+                                        "village": "${data.village}",
+                                        "city": "${data.city}",
+                                        "pinCode": "${data.pinCode}",
+                                        "mobileNumber": "${data.mobileNumber}",
+                                        "phoneNo": "${data.phoneNo}",
+                                        "emailId": "${data.emailId}",
+                                        "extraDetails": "${data.extraDetails}",
+                                        "missingDocument": "${form.missingDocument}",
+                                        "districtCommissionerate": "${form.districtCommissionerate}",
+                                        "policeStationJurisdictionKnown": "${form.policeStationJurisdictionKnown}",
+                                        "policeStation": "${form.policeStation}",
+                                        "nearestLandmarkArea": "${form.nearestLandmarkArea}",
+                                        "reasonForMissingDocument": "${form.reasonForMissingDocument}",
+                                        "idProofToBeUploaded": "${form.idProofToBeUploaded}",
+                                        "addressProofToBeUploaded": "${form.addressProofToBeUploaded}",
+                                        "deliveryType": "${form.deliveryType}"
+                                    }
+                                },
+                                "label": "Submit",
+                                "type": "Footer"
+                            }
+                        ],
+                        "init-values": {
+                            "name": "${data.nameInitValue}",
+                            "surname": "${data.surnameInitValue}",
+                            "state": "Andhrapradesh",
+                            "pinCode": "${data.pinCodeInitValue}",
+                            "mobileNumber": "${data.mobileNoInitValue}",
+                            "phoneNo": ""
+                        }
+                    }
+                ]
+            },
+            "terminal": true
+        }
+    ]
+}

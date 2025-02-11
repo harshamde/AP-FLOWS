@@ -1,0 +1,990 @@
+{
+  "version": "6.1",
+  "routing_model": {
+    "WELCOME": [
+      "INFORMANT_DETAILS",
+      "SERVICE_DETAILS"
+    ],
+    "INFORMANT_DETAILS": [
+      "SERVICE_DETAILS"
+    ],
+    "SERVICE_DETAILS": []
+  },
+  "data_api_version": "3.0",
+  "screens": [
+    {
+      "data": {
+        "genderList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            }
+          },
+          "__example__": [
+            {
+              "id": "1",
+              "title": "Male"
+            }
+          ]
+        },
+        "districtList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            }
+          },
+          "__example__": [
+            {
+              "id": "31",
+              "title": "Nagpur"
+            }
+          ]
+        },
+        "mandalList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            }
+          },
+          "__example__": [
+            {
+              "id": "1",
+              "title": "Mandal Name"
+            }
+          ]
+        },
+        "isMandalVisible": {
+          "type": "boolean",
+          "__example__": false
+        },
+        "villageList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            }
+          },
+          "__example__": [
+            {
+              "id": "11",
+              "title": "Bramhapuri"
+            }
+          ]
+        },
+        "isVillageVisible": {
+          "type": "boolean",
+          "__example__": false
+        },
+        "mobileNoInitValue": {
+          "type": "string",
+          "__example__": "7020232834"
+        },
+        "nameInitValue": {
+          "type": "string",
+          "__example__": "Mayur"
+        },
+        "surnameInitValue": {
+          "type": "string",
+          "__example__": "Dhakite"
+        },
+        "districtErrorBody": {
+          "type": "string",
+          "__example__": "Error in First Screen"
+        },
+        "isDistrictErrorVisible": {
+          "type": "boolean",
+          "__example__": false
+        },
+        "pinCodeInitValue": {
+          "type": "string",
+          "__example__": "441206"
+        },
+        "extraDetails": {
+          "type": "string",
+          "__example__": ""
+        }
+      },
+      "id": "WELCOME",
+      "title": "ప్రాథమిక వివరాలు",
+      "layout": {
+        "type": "SingleColumnLayout",
+        "children": [
+          {
+            "type": "Form",
+            "name": "form",
+            "children": [
+              {
+                "text": "తప్పిపోయిన లేదా కోల్పోయిన పత్రాల అప్లికేషన్",
+                "visible": true,
+                "type": "TextHeading"
+              },
+              {
+                "label": "పేరు",
+                "name": "name",
+                "required": true,
+                "min-chars": 4,
+                "max-chars": 49,
+                "type": "TextInput"
+              },
+              {
+                "label": "ఇంటిపేరు",
+                "name": "surname",
+                "required": true,
+                "type": "TextInput"
+              },
+              {
+                "label": "లింగం",
+                "name": "gender",
+                "data-source": "${data.genderList}",
+                "required": true,
+                "type": "Dropdown"
+              },
+              {
+                "label": "వయస్సు",
+                "name": "age",
+                "required": true,
+                "input-type": "number",
+                "min-chars": 1,
+                "max-chars": 2,
+                "type": "TextInput"
+              },
+              {
+                "label": "వృత్తి",
+                "name": "occupation",
+                "required": true,
+                "min-chars": 4,
+                "max-chars": 29,
+                "type": "TextInput"
+              },
+              {
+                "label": "చిరునామా లైన్ 1",
+                "name": "addressLine1",
+                "required": true,
+                "max-length": 99,
+                "type": "TextArea"
+              },
+              {
+                "label": "చిరునామా లైన్ 2",
+                "name": "addressLine2",
+                "required": true,
+                "max-length": 99,
+                "type": "TextArea"
+              },
+              {
+                "label": "రాష్ట్రం/UT",
+                "name": "state",
+                "data-source": [
+                  {
+                    "id": "Andhrapradesh",
+                    "title": "Andhrapradesh"
+                  }
+                ],
+                "required": true,
+                "type": "Dropdown"
+              },
+              {
+                "label": "జిల్లా",
+                "name": "district",
+                "data-source": "${data.districtList}",
+                "required": true,
+                "enabled": true,
+                "on-select-action": {
+                  "name": "data_exchange",
+                  "payload": {
+                    "name": "${form.name}",
+                    "surname": "${form.surname}",
+                    "gender": "${form.gender}",
+                    "age": "${form.age}",
+                    "occupation": "${form.occupation}",
+                    "addressLine1": "${form.addressLine1}",
+                    "addressLine2": "${form.addressLine2}",
+                    "state": "${form.state}",
+                    "district": "${form.district}",
+                    "mandal": "${form.mandal}",
+                    "village": "${form.village}",
+                    "city": "${form.city}",
+                    "pinCode": "${form.pinCode}",
+                    "mobileNumber": "${form.mobileNumber}",
+                    "phoneNo": "${form.phoneNo}",
+                    "emailId": "${form.emailId}",
+                    "extraDetails": "${data.extraDetails}",
+                    "onSelectAction": "on-district-click"
+                  }
+                },
+                "type": "Dropdown"
+              },
+              {
+                "label": "మండలం",
+                "name": "mandal",
+                "data-source": "${data.mandalList}",
+                "required": true,
+                "visible": "${data.isMandalVisible}",
+                "on-select-action": {
+                  "name": "data_exchange",
+                  "payload": {
+                    "name": "${form.name}",
+                    "surname": "${form.surname}",
+                    "gender": "${form.gender}",
+                    "age": "${form.age}",
+                    "occupation": "${form.occupation}",
+                    "addressLine1": "${form.addressLine1}",
+                    "addressLine2": "${form.addressLine2}",
+                    "state": "${form.state}",
+                    "district": "${form.district}",
+                    "mandal": "${form.mandal}",
+                    "village": "${form.village}",
+                    "city": "${form.city}",
+                    "pinCode": "${form.pinCode}",
+                    "mobileNumber": "${form.mobileNumber}",
+                    "phoneNo": "${form.phoneNo}",
+                    "emailId": "${form.emailId}",
+                    "extraDetails": "${data.extraDetails}",
+                    "onSelectAction": "on-mandal-click"
+                  }
+                },
+                "type": "Dropdown"
+              },
+              {
+                "label": "గ్రామం",
+                "name": "village",
+                "data-source": "${data.villageList}",
+                "required": true,
+                "visible": "${data.isVillageVisible}",
+                "type": "Dropdown"
+              },
+              {
+                "text": "${data.districtErrorBody}",
+                "visible": "${data.isDistrictErrorVisible}",
+                "type": "TextBody"
+              },
+              {
+                "label": "నగరం",
+                "name": "city",
+                "required": true,
+                "min-chars": 4,
+                "max-chars": 29,
+                "type": "TextInput"
+              },
+              {
+                "label": "పిన్ కోడ్",
+                "name": "pinCode",
+                "required": true,
+                "input-type": "number",
+                "min-chars": 6,
+                "max-chars": 6,
+                "type": "TextInput"
+              },
+              {
+                "label": "మొబైల్ నంబర్",
+                "name": "mobileNumber",
+                "required": true,
+                "min-chars": 10,
+                "max-chars": 10,
+                "input-type": "number",
+                "type": "TextInput"
+              },
+              {
+                "label": "ఫోన్ నంబర్",
+                "input-type": "phone",
+                "min-chars": 11,
+                "max-chars": 11,
+                "name": "phoneNo",
+                "type": "TextInput"
+              },
+              {
+                "label": "ఇమెయిల్ ID",
+                "name": "emailId",
+                "input-type": "email",
+                "type": "TextInput"
+              },
+              {
+                "label": "కొనసాగించు",
+                "on-click-action": {
+                  "name": "data_exchange",
+                  "payload": {
+                    "name": "${form.name}",
+                    "surname": "${form.surname}",
+                    "gender": "${form.gender}",
+                    "age": "${form.age}",
+                    "occupation": "${form.occupation}",
+                    "addressLine1": "${form.addressLine1}",
+                    "addressLine2": "${form.addressLine2}",
+                    "state": "${form.state}",
+                    "district": "${form.district}",
+                    "mandal": "${form.mandal}",
+                    "village": "${form.village}",
+                    "city": "${form.city}",
+                    "pinCode": "${form.pinCode}",
+                    "mobileNumber": "${form.mobileNumber}",
+                    "phoneNo": "${form.phoneNo}",
+                    "emailId": "${form.emailId}",
+                    "extraDetails": "${data.extraDetails}"
+                  }
+                },
+                "type": "Footer"
+              }
+            ],
+            "init-values": {
+              "name": "${data.nameInitValue}",
+              "surname": "${data.surnameInitValue}",
+              "state": "Andhrapradesh",
+              "pinCode": "${data.pinCodeInitValue}",
+              "mobileNumber": "${data.mobileNoInitValue}",
+              "phoneNo": ""
+            }
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "name": {
+          "type": "string",
+          "__example__": ""
+        },
+        "surname": {
+          "type": "string",
+          "__example__": ""
+        },
+        "gender": {
+          "type": "string",
+          "__example__": ""
+        },
+        "age": {
+          "type": "string",
+          "__example__": ""
+        },
+        "occupation": {
+          "type": "string",
+          "__example__": ""
+        },
+        "addressLine1": {
+          "type": "string",
+          "__example__": ""
+        },
+        "addressLine2": {
+          "type": "string",
+          "__example__": ""
+        },
+        "state": {
+          "type": "string",
+          "__example__": ""
+        },
+        "district": {
+          "type": "string",
+          "__example__": ""
+        },
+        "mandal": {
+          "type": "string",
+          "__example__": ""
+        },
+        "village": {
+          "type": "string",
+          "__example__": ""
+        },
+        "city": {
+          "type": "string",
+          "__example__": ""
+        },
+        "pinCode": {
+          "type": "string",
+          "__example__": ""
+        },
+        "mobileNumber": {
+          "type": "string",
+          "__example__": ""
+        },
+        "phoneNo": {
+          "type": "string",
+          "__example__": ""
+        },
+        "emailId": {
+          "type": "string",
+          "__example__": ""
+        },
+        "extraDetails": {
+          "type": "string",
+          "__example__": ""
+        },
+        "ralationshipWithApplicantList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            }
+          },
+          "__example__": [
+            {
+              "id": "Father",
+              "title": "Father"
+            }
+          ]
+        },
+        "secondScreenErrorBody": {
+          "type": "string",
+          "__example__": "Error in Second Screen"
+        },
+        "showSecondScreenError": {
+          "type": "boolean",
+          "__example__": false
+        }
+      },
+      "id": "INFORMANT_DETAILS",
+      "title": "తేల్చే వ్యక్తి వివరాలు",
+      "layout": {
+        "type": "SingleColumnLayout",
+        "children": [
+          {
+            "type": "Form",
+            "name": "form",
+            "children": [
+              {
+                "text": "ఇన్‌ఫార్మర్‌ల వివరాలు",
+                "visible": true,
+                "type": "TextHeading"
+              },
+              {
+                "label": "సమాచారకర్త పేరు",
+                "name": "informantName",
+                "required": true,
+                "min-chars": 3,
+                "max-chars": 49,
+                "type": "TextInput"
+              },
+              {
+                "label": "ఇన్‌ఫార్మర్ ఇంటిపేరు",
+                "name": "informantSurname",
+                "required": true,
+                "min-chars": 3,
+                "max-chars": 50,
+                "type": "TextInput"
+              },
+              {
+                "label": "దరఖాస్తుదారుతో సంబంధం",
+                "name": "relationshipWithApplicant",
+                "required": true,
+                "data-source": "${data.ralationshipWithApplicantList}",
+                "type": "Dropdown"
+              },
+              {
+                "text": "${data.secondScreenErrorBody}",
+                "visible": "${data.showSecondScreenError}",
+                "type": "TextBody"
+              },
+              {
+                "on-click-action": {
+                  "name": "data_exchange",
+                  "payload": {
+                    "name": "${data.name}",
+                    "surname": "${data.surname}",
+                    "gender": "${data.gender}",
+                    "age": "${data.age}",
+                    "occupation": "${data.occupation}",
+                    "addressLine1": "${data.addressLine1}",
+                    "addressLine2": "${data.addressLine2}",
+                    "state": "${data.state}",
+                    "district": "${data.district}",
+                    "mandal": "${data.mandal}",
+                    "village": "${data.village}",
+                    "city": "${data.city}",
+                    "pinCode": "${data.pinCode}",
+                    "mobileNumber": "${data.mobileNumber}",
+                    "phoneNo": "${data.phoneNo}",
+                    "emailId": "${data.emailId}",
+                    "extraDetails": "${data.extraDetails}",
+                    "informantName": "${form.informantName}",
+                    "informantSurname": "${form.informantSurname}",
+                    "relationshipWithApplicant": "${form.relationshipWithApplicant}"
+                  }
+                },
+                "label": "కొనసాగించు",
+                "type": "Footer"
+              }
+            ],
+            "init-values": {
+              "name": "${data.nameInitValue}",
+              "surname": "${data.surnameInitValue}",
+              "state": "Andhrapradesh",
+              "pinCode": "${data.pinCodeInitValue}",
+              "mobileNumber": "${data.mobileNoInitValue}",
+              "phoneNo": ""
+            }
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "informantName": {
+          "type": "string",
+          "__example__": ""
+        },
+        "informantSurname": {
+          "type": "string",
+          "__example__": ""
+        },
+        "relationshipWithApplicant": {
+          "type": "string",
+          "__example__": ""
+        },
+        "name": {
+          "type": "string",
+          "__example__": ""
+        },
+        "surname": {
+          "type": "string",
+          "__example__": ""
+        },
+        "gender": {
+          "type": "string",
+          "__example__": ""
+        },
+        "age": {
+          "type": "string",
+          "__example__": ""
+        },
+        "occupation": {
+          "type": "string",
+          "__example__": ""
+        },
+        "addressLine1": {
+          "type": "string",
+          "__example__": ""
+        },
+        "addressLine2": {
+          "type": "string",
+          "__example__": ""
+        },
+        "state": {
+          "type": "string",
+          "__example__": ""
+        },
+        "district": {
+          "type": "string",
+          "__example__": ""
+        },
+        "mandal": {
+          "type": "string",
+          "__example__": ""
+        },
+        "village": {
+          "type": "string",
+          "__example__": ""
+        },
+        "city": {
+          "type": "string",
+          "__example__": ""
+        },
+        "pinCode": {
+          "type": "string",
+          "__example__": ""
+        },
+        "mobileNumber": {
+          "type": "string",
+          "__example__": ""
+        },
+        "phoneNo": {
+          "type": "string",
+          "__example__": ""
+        },
+        "emailId": {
+          "type": "string",
+          "__example__": ""
+        },
+        "extraDetails": {
+          "type": "string",
+          "__example__": ""
+        },
+        "missingDocumentList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            }
+          },
+          "__example__": [
+            {
+              "id": "1",
+              "title": "Aadhaar Card"
+            }
+          ]
+        },
+        "districtCommissionerateList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            }
+          },
+          "__example__": [
+            {
+              "id": "12",
+              "title": "CHITOOR"
+            }
+          ]
+        },
+        "idProofToBeUploadedList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            }
+          },
+          "__example__": [
+            {
+              "id": "Driviing_licence",
+              "title": "Driving License"
+            }
+          ]
+        },
+        "addressProofToBeUploaded": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            }
+          },
+          "__example__": [
+            {
+              "id": "2313",
+              "title": "Affidavit/Notary/Paper Advertisement"
+            }
+          ]
+        },
+        "isPoliceStationVisible": {
+          "type": "boolean",
+          "__example__": false
+        },
+        "policeStationList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            }
+          },
+          "__example__": [
+            {
+              "id": "312",
+              "title": "Alluru Sitarama Raju"
+            }
+          ]
+        },
+        "nearestLandmarkAreaVisible": {
+          "type": "boolean",
+          "__example__": false
+        },
+        "errorBody": {
+          "type": "string",
+          "__example__": "Error in script"
+        },
+        "errorBodyVisible": {
+          "type": "boolean",
+          "__example__": false
+        },
+        "isPoliceJuriButtonVisible": {
+          "type": "boolean",
+          "__example__": false
+        },
+        "yesNoList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            }
+          },
+          "__example__": [
+            {
+              "id": "Yes",
+              "title": "అవును"
+            },
+            {
+              "id": "No",
+              "title": "నం"
+            }
+          ]
+        }
+      },
+      "id": "SERVICE_DETAILS",
+      "title": "సేవ వివరాలు",
+      "layout": {
+        "type": "SingleColumnLayout",
+        "children": [
+          {
+            "type": "Form",
+            "name": "form",
+            "children": [
+              {
+                "text": "సర్వీస్ వివరాలు",
+                "visible": true,
+                "type": "TextHeading"
+              },
+              {
+                "label": "తప్పిపోయిన/ పోయిన పత్రం/ కథనం",
+                "name": "missingDocument",
+                "data-source": "${data.missingDocumentList}",
+                "required": true,
+                "type": "Dropdown"
+              },
+              {
+                "label": "జిల్లా/కమిషనరేట్",
+                "name": "districtCommissionerate",
+                "data-source": "${data.districtCommissionerateList}",
+                "required": true,
+                "on-select-action": {
+                  "name": "data_exchange",
+                  "payload": {
+                    "informantName": "${data.informantName}",
+                    "informantSurname": "${data.informantSurname}",
+                    "relationshipWithApplicant": "${data.relationshipWithApplicant}",
+                    "name": "${data.name}",
+                    "surname": "${data.surname}",
+                    "gender": "${data.gender}",
+                    "age": "${data.age}",
+                    "occupation": "${data.occupation}",
+                    "addressLine1": "${data.addressLine1}",
+                    "addressLine2": "${data.addressLine2}",
+                    "state": "${data.state}",
+                    "district": "${data.district}",
+                    "mandal": "${data.mandal}",
+                    "village": "${data.village}",
+                    "city": "${data.city}",
+                    "pinCode": "${data.pinCode}",
+                    "mobileNumber": "${data.mobileNumber}",
+                    "phoneNo": "${data.phoneNo}",
+                    "emailId": "${data.emailId}",
+                    "extraDetails": "${data.extraDetails}",
+                    "missingDocument": "${form.missingDocument}",
+                    "districtCommissionerate": "${form.districtCommissionerate}",
+                    "policeStationJurisdictionKnown": "${form.policeStationJurisdictionKnown}",
+                    "policeStation": "${form.policeStation}",
+                    "nearestLandmarkArea": "${form.nearestLandmarkArea}",
+                    "reasonForMissingDocument": "${form.reasonForMissingDocument}",
+                    "idProofToBeUploaded": "${form.idProofToBeUploaded}",
+                    "addressProofToBeUploaded": "${form.addressProofToBeUploaded}",
+                    "deliveryType": "${form.deliveryType}",
+                    "onSelectAction": "on-district-click"
+                  }
+                },
+                "type": "Dropdown"
+              },
+              {
+                "label": "పోలీస్ స్టేషన్ అధికార పరిధి తెలుసు",
+                "name": "policeStationJurisdictionKnown",
+                "data-source": "${data.yesNoList}",
+                "required": true,
+                "on-select-action": {
+                  "name": "data_exchange",
+                  "payload": {
+                    "informantName": "${data.informantName}",
+                    "informantSurname": "${data.informantSurname}",
+                    "relationshipWithApplicant": "${data.relationshipWithApplicant}",
+                    "name": "${data.name}",
+                    "surname": "${data.surname}",
+                    "gender": "${data.gender}",
+                    "age": "${data.age}",
+                    "occupation": "${data.occupation}",
+                    "addressLine1": "${data.addressLine1}",
+                    "addressLine2": "${data.addressLine2}",
+                    "state": "${data.state}",
+                    "district": "${data.district}",
+                    "mandal": "${data.mandal}",
+                    "village": "${data.village}",
+                    "city": "${data.city}",
+                    "pinCode": "${data.pinCode}",
+                    "mobileNumber": "${data.mobileNumber}",
+                    "phoneNo": "${data.phoneNo}",
+                    "emailId": "${data.emailId}",
+                    "extraDetails": "${data.extraDetails}",
+                    "missingDocument": "${form.missingDocument}",
+                    "districtCommissionerate": "${form.districtCommissionerate}",
+                    "policeStationJurisdictionKnown": "${form.policeStationJurisdictionKnown}",
+                    "policeStation": "${form.policeStation}",
+                    "nearestLandmarkArea": "${form.nearestLandmarkArea}",
+                    "reasonForMissingDocument": "${form.reasonForMissingDocument}",
+                    "idProofToBeUploaded": "${form.idProofToBeUploaded}",
+                    "addressProofToBeUploaded": "${form.addressProofToBeUploaded}",
+                    "deliveryType": "${form.deliveryType}",
+                    "onSelectAction": "ps-juri-click"
+                  }
+                },
+                "visible": "${data.isPoliceJuriButtonVisible}",
+                "type": "RadioButtonsGroup"
+              },
+              {
+                "text": "${data.errorBody}",
+                "visible": "${data.errorBodyVisible}",
+                "font-weight": "italic",
+                "strikethrough": false,
+                "type": "TextBody"
+              },
+              {
+                "label": "పోలీస్ స్టేషన్",
+                "name": "policeStation",
+                "required": true,
+                "visible": "${data.isPoliceStationVisible}",
+                "data-source": "${data.policeStationList}",
+                "type": "Dropdown"
+              },
+              {
+                "label": "సమీప ల్యాండ్‌మార్క్/ ఏరియా వివరణ",
+                "name": "nearestLandmarkArea",
+                "required": true,
+                "visible": "${data.nearestLandmarkAreaVisible}",
+                "type": "TextArea"
+              },
+              {
+                "label": "పత్రం/కథనం మిస్ కావడానికి కారణం",
+                "name": "reasonForMissingDocument",
+                "required": true,
+                "max-length": 200,
+                "type": "TextArea"
+              },
+              {
+                "label": "ID ప్రూఫ్ అప్‌లోడ్ చేయాలి",
+                "name": "idProofToBeUploaded",
+                "data-source": "${data.idProofToBeUploadedList}",
+                "required": true,
+                "type": "Dropdown"
+              },
+              {
+                "label": "అడ్రస్ ప్రూఫ్ అప్‌లోడ్ చేయాలి",
+                "name": "addressProofToBeUploaded",
+                "data-source": "${data.addressProofToBeUploaded}",
+                "required": true,
+                "type": "Dropdown"
+              },
+              {
+                "label": "డెలివరీ రకం",
+                "name": "deliveryType",
+                "data-source": [
+                  {
+                    "id": "మాన్యువల్",
+                    "title": "మాన్యువల్"
+                  }
+                ],
+                "required": true,
+                "type": "Dropdown"
+              },
+              {
+                "on-click-action": {
+                  "name": "complete",
+                  "payload": {
+                    "informantName": "${data.informantName}",
+                    "informantSurname": "${data.informantSurname}",
+                    "relationshipWithApplicant": "${data.relationshipWithApplicant}",
+                    "name": "${data.name}",
+                    "surname": "${data.surname}",
+                    "gender": "${data.gender}",
+                    "age": "${data.age}",
+                    "occupation": "${data.occupation}",
+                    "addressLine1": "${data.addressLine1}",
+                    "addressLine2": "${data.addressLine2}",
+                    "state": "${data.state}",
+                    "district": "${data.district}",
+                    "mandal": "${data.mandal}",
+                    "village": "${data.village}",
+                    "city": "${data.city}",
+                    "pinCode": "${data.pinCode}",
+                    "mobileNumber": "${data.mobileNumber}",
+                    "phoneNo": "${data.phoneNo}",
+                    "emailId": "${data.emailId}",
+                    "extraDetails": "${data.extraDetails}",
+                    "missingDocument": "${form.missingDocument}",
+                    "districtCommissionerate": "${form.districtCommissionerate}",
+                    "policeStationJurisdictionKnown": "${form.policeStationJurisdictionKnown}",
+                    "policeStation": "${form.policeStation}",
+                    "nearestLandmarkArea": "${form.nearestLandmarkArea}",
+                    "reasonForMissingDocument": "${form.reasonForMissingDocument}",
+                    "idProofToBeUploaded": "${form.idProofToBeUploaded}",
+                    "addressProofToBeUploaded": "${form.addressProofToBeUploaded}",
+                    "deliveryType": "${form.deliveryType}"
+                  }
+                },
+                "label": "సమర్పించండి",
+                "type": "Footer"
+              }
+            ],
+            "init-values": {
+              "name": "${data.nameInitValue}",
+              "surname": "${data.surnameInitValue}",
+              "state": "Andhrapradesh",
+              "pinCode": "${data.pinCodeInitValue}",
+              "mobileNumber": "${data.mobileNoInitValue}",
+              "phoneNo": ""
+            }
+          }
+        ]
+      },
+      "terminal": true
+    }
+  ]
+}
