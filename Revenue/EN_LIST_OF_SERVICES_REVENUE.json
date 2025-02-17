@@ -1543,8 +1543,7 @@
                             }
                         ],
                         "init-values": {
-                            "selectServices": "${data.initSelectedService}",
-                            "otpForExistingUser": ""
+                            "selectServices": "${data.initSelectedService}"
                         }
                     }
                 ]
