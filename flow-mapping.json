@@ -1,0 +1,474 @@
+[
+    {
+        "department": "revenue",
+        "service": "Issuance of income & asset certificate",
+        "externalFlowId": "923953186132416",
+        "oneSpocFlowId": "546655828148483",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "COMPUTERIZED_ADANGAL_CERTIFICATE ",
+        "externalFlowId": "1153922986346048",
+        "oneSpocFlowId": "1671757643759878",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "FAMILY_MEMEBER_CERTIFICATE",
+        "externalFlowId": "1258348658754823",
+        "oneSpocFlowId": "1314812706619535",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "OBC_CERTIFICATE",
+        "externalFlowId": "1638115290142954",
+        "oneSpocFlowId": "1787114635421607",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "MISSING/LOST_DOCUMENTS_(MEESEVA)",
+        "externalFlowId": "609309078278414",
+        "oneSpocFlowId": "573360185291862",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "TITLE_DEED_CUM_PASSBOOK",
+        "externalFlowId": "906810424902772",
+        "oneSpocFlowId": "910938571141629",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "AGRICULTURE_INCOME_CERTIFICATE",
+        "externalFlowId": "1991945634643661",
+        "oneSpocFlowId": "2048992872229307",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "PRINTING_OF_TITLE_DEED_CUM_PATTADAR_PASSBOOK",
+        "externalFlowId": "1794016048001836",
+        "oneSpocFlowId": "1224563255300005",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "MARRIAGE_CERTIFICATE",
+        "externalFlowId": "1121552076639055",
+        "oneSpocFlowId": "1227629934983193",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "NO_EARNING_CERTIFICATE",
+        "externalFlowId": "2668577020006759",
+        "oneSpocFlowId": "556106923959295",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "NTR_VAIDYASEVA_UPDATE_CARD",
+        "externalFlowId": "1265646814659831",
+        "oneSpocFlowId": "1028045139094644",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "WATER_TAX",
+        "externalFlowId": "459658683650231",
+        "oneSpocFlowId": "415531858221828",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "ROR-1B",
+        "externalFlowId": "1107900447243229",
+        "oneSpocFlowId": "2104625279989978",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "RE-ISSUANCE_INCOME_CERTIFICATE",
+        "externalFlowId": "1222994035464855",
+        "oneSpocFlowId": "9135873303117683",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "RE-ISSUANCE_INTEGRATED_CERTIFICATE",
+        "externalFlowId": "1211859427226043",
+        "oneSpocFlowId": "1367104964257315",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "LIST_OF_SERVICES (BASIC DETAILS)",
+        "externalFlowId": "603690312138572",
+        "oneSpocFlowId": "3940608936152482",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "cdma",
+        "service": "CDMA_KNOW_YOUR_DUES",
+        "externalFlowId": "459926217158421",
+        "oneSpocFlowId": "2079568135877007",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "cdma",
+        "service": "CDMA_APPLICATION_STATUS",
+        "externalFlowId": "1392271688884201",
+        "oneSpocFlowId": "1288735702361219",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "cdma",
+        "service": "CDMA_SERVICE_SELECTION",
+        "externalFlowId": "2427377617612375",
+        "oneSpocFlowId": "405964369177805",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "EN_FAMILY_MEMBER_CERIFICATE",
+        "externalFlowId": "576785898580969",
+        "oneSpocFlowId": "1290994328784598",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "TE_FAMILY_MEMBER_CERIFICATE",
+        "externalFlowId": "3750208801906503",
+        "oneSpocFlowId": "1093217452544698",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "TE_OBC_CERTIFICATE",
+        "externalFlowId": "1009306717675402",
+        "oneSpocFlowId": "2272885643097543",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "EN_OBC_CERTIFICATE",
+        "externalFlowId": "1686372748951284",
+        "oneSpocFlowId": "1161917895285860",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "EN_WATER_TAX",
+        "externalFlowId": "995873129038667",
+        "oneSpocFlowId": "1657430948532068",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "TE_WATER_TAX",
+        "externalFlowId": "1286208979305213",
+        "oneSpocFlowId": "1166596721493201",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "EN_RE_ISSUANCE_INCOME_CERTIFICATE",
+        "externalFlowId": "1315267146169076",
+        "oneSpocFlowId": "2032503223890017",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "TE_RE_ISSUANCE_INCOME_CERTIFICATE",
+        "externalFlowId": "493105577143665",
+        "oneSpocFlowId": "624028033313223",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "EN_RE_ISSUANCE_INTEGRATED_CERTIFICATE",
+        "externalFlowId": "919493560359218",
+        "oneSpocFlowId": "570112379232870",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "TE_RE_ISSUANCE_INTEGRATED_CERTIFICATE",
+        "externalFlowId": "527098063715779",
+        "oneSpocFlowId": "1573280796659654",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "EN_ROR_1B",
+        "externalFlowId": "596715719962267",
+        "oneSpocFlowId": "534159052417102",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "TE_ROR_1B",
+        "externalFlowId": "978047764254866",
+        "oneSpocFlowId": "535296156204746",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "EN_AGRICULTURE_INCOME_CERTIFICATE",
+        "externalFlowId": "1103834631380780",
+        "oneSpocFlowId": "895868769078269",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "TE_AGRICULTURE_INCOME_CERTIFICATE",
+        "externalFlowId": "629634136164895",
+        "oneSpocFlowId": "971733508342927",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "EN_PRINTING_OF_TITLE_DEED_CUM_PATTADAR_PASSBOOK",
+        "externalFlowId": "613772274370636",
+        "oneSpocFlowId": "4307765306117843",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "TE_PRINTING_OF_TITLE_DEED_CUM_PATTADAR_PASSBOOK",
+        "externalFlowId": "591049376875601",
+        "oneSpocFlowId": "491073057352160",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "TE_EWS",
+        "externalFlowId": "1108989684098352",
+        "oneSpocFlowId": "496373460149272",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "EN_EWS",
+        "externalFlowId": "623915073345421",
+        "oneSpocFlowId": "586515290795604",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "EN_TITLE_DEED_CUM_PASSBOOK",
+        "externalFlowId": "1786584035473693",
+        "oneSpocFlowId": "1106585567443271",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "TE_TITLE_DEED_CUM_PASSBOOK",
+        "externalFlowId": "9381460171877777",
+        "oneSpocFlowId": "2682462161941397",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "EN_NO_EARNING_CERTIFICATE",
+        "externalFlowId": "1107455584399383",
+        "oneSpocFlowId": "623394720349071",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "TE_NO_EARNING_CERTIFICATE",
+        "externalFlowId": "964333531727375",
+        "oneSpocFlowId": "1108815367195013",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "EN_COMPUTERIZED_ADANGAL_CERTIFIACATE",
+        "externalFlowId": "472621529225600",
+        "oneSpocFlowId": "483307887764985",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "TE_COMPUTERIZED_ADANGAL_CERTIFIACATE",
+        "externalFlowId": "612375391337742",
+        "oneSpocFlowId": "2451018215233052",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "TE_MISSING_DOCUMENTS",
+        "externalFlowId": "29267367596195560",
+        "oneSpocFlowId": "941085314360891",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "EN_MISSING_DOCUMENTS",
+        "externalFlowId": "2894469440728282",
+        "oneSpocFlowId": "1780139449506448",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "EN_LIST_OF_SERVICES_REVENUE",
+        "externalFlowId": "963344479101254",
+        "oneSpocFlowId": "1323995995273087",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "TE_LIST_OF_SERVICE_REVENUE",
+        "externalFlowId": "2033028260549742",
+        "oneSpocFlowId": "1305312137259853",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "cdma",
+        "service": "EN_CDMA_SERVICE_SELECTION",
+        "externalFlowId": "1159918339089566",
+        "oneSpocFlowId": "3498331213796438",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "cdma",
+        "service": "TE_CDMA_SERVICE_SELECTION",
+        "externalFlowId": "2362260344129142",
+        "oneSpocFlowId": "495234470277131",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "EN_NTR_VAIDYASEVA_CARD",
+        "externalFlowId": "2058536874593653",
+        "oneSpocFlowId": "1294086145234789",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "TE_NTR_VAIDYASEVA_CARD",
+        "externalFlowId": "1162969648505829",
+        "oneSpocFlowId": "1300044487899352",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "EN_MARRIAGE_CERTIFICATE",
+        "externalFlowId": "584220094492193",
+        "oneSpocFlowId": "980653800582985",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "TE_MARRIAGE_CERTIFICATE",
+        "externalFlowId": "1338367603852001",
+        "oneSpocFlowId": "911652034089593",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "cdma",
+        "service": "EN_CDMA_KNOW_YOUR_DUES",
+        "externalFlowId": "1375747613308505",
+        "oneSpocFlowId": "1145906740362791",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "cdma",
+        "service": "TE_CDMA_KNOW_YOUR_DUES",
+        "externalFlowId": "1031693315450815",
+        "oneSpocFlowId": "1153376413151722",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "cdma",
+        "service": "EN_CDMA_APPLICATION_STATUS",
+        "externalFlowId": "973441987999489",
+        "oneSpocFlowId": "1811776999604612",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "cdma",
+        "service": "TE_CDMA_APPLICATION_STATUS",
+        "externalFlowId": "1137750384474304",
+        "oneSpocFlowId": "964832575306860",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "EN_LIST_OF_SERVICES_REVENUE",
+        "externalFlowId": "963344479101254",
+        "oneSpocFlowId": "1185763762909281",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    },
+    {
+        "department": "revenue",
+        "service": "TE_LIST_OF_SERVICE_REVENUE",
+        "externalFlowId": "2033028260549742",
+        "oneSpocFlowId": "572143715823045",
+        "externalWabaNumber": "919552300009",
+        "oneSpocWabaNumber": "919168690987"
+    }
+]
