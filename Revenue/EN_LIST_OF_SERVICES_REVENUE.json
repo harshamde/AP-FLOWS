@@ -544,7 +544,7 @@
                 }
             },
             "id": "LIST_OF_SERVICES",
-            "title": "List Of Services",
+            "title": "Details",
             "layout": {
                 "type": "SingleColumnLayout",
                 "children": [
