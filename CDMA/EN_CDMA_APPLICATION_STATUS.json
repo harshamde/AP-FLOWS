@@ -150,6 +150,18 @@
                     "type": "boolean",
                     "__example__": true
                 },
+                "initServices": {
+                    "type": "string",
+                    "__example__": "Water Tax"
+                },
+                "isServiceVisible": {
+                    "type": "boolean",
+                    "__example__": true
+                },
+                "isServiceEnabled": {
+                    "type": "boolean",
+                    "__example__": true
+                },
                 "extraDetails": {
                     "type": "string",
                     "__example__": ""
@@ -192,6 +204,8 @@
                                         "onSelectAction": "service"
                                     }
                                 },
+                                "visible": "${data.isServiceVisible}",
+                                "enabled": "${data.isServiceEnabled}",
                                 "type": "Dropdown"
                             },
                             {
@@ -298,7 +312,7 @@
                             }
                         ],
                         "init-values": {
-                            "service": "${data.serviceInit}",
+                            "service": "${data.initServices}",
                             "mobileNumber": "${data.initMobileNumber}"
                         }
                     }
@@ -371,7 +385,7 @@
                             }
                         ],
                         "init-values": {
-                            "service": "${data.serviceInit}",
+                            "service": "${data.initServices}",
                             "mobileNumber": "${data.initMobileNumber}"
                         }
                     }
