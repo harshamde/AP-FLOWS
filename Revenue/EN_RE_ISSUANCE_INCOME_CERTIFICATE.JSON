@@ -697,6 +697,18 @@
         "isDetailsErrorVisible": {
           "type": "boolean",
           "__example__": false
+        },
+        "isDocumentUploadVisible": {
+          "type": "boolean",
+          "__example__": false
+        },
+        "documentLabel": {
+          "type": "string",
+          "__example__": "Upload ID Proof"
+        },
+        "documentDescription": {
+          "type": "string",
+          "__example__": "Proof of actual applicant or his/her parents."
         }
       },
       "id": "APPLICATION_FORM",
@@ -763,6 +775,7 @@
                     "applicationNumber": "${form.applicationNumber}",
                     "relation": "${form.relation}",
                     "applyReason": "${form.applyReason}",
+                    "applicationDocument": "${form.applicationDocument}",
                     "firstOptIn": "${form.firstOptIn}",
                     "secondOptIn": "${form.secondOptIn}",
                     "onSelectEvent": "get-details-link-selected"
@@ -776,6 +789,19 @@
                 "text": "${data.applicantDetailsTextBody}",
                 "visible": "${data.isApplicantDetailsTextBodyVisible}",
                 "type": "TextBody"
+              },
+              {
+                "max-file-size-kb": 1024,
+                "allowed-mime-types": [
+                  "application/pdf"
+                ],
+                "max-uploaded-documents": 1,
+                "min-uploaded-documents": 1,
+                "name": "applicationDocument",
+                "label": "${data.documentLabel}",
+                "description": "${data.documentDescription}",
+                "visible": "${data.isDocumentUploadVisible}",
+                "type": "DocumentPicker"
               },
               {
                 "on-click-action": {
@@ -796,6 +822,7 @@
                     "applicationNumber": "${form.applicationNumber}",
                     "relation": "${form.relation}",
                     "applyReason": "${form.applyReason}",
+                    "applicationDocument": "${form.applicationDocument}",
                     "firstOptIn": "${form.firstOptIn}",
                     "secondOptIn": "${form.secondOptIn}",
                     "onSelectEvent": "first-declaration-selected"
@@ -826,6 +853,7 @@
                     "applicationNumber": "${form.applicationNumber}",
                     "relation": "${form.relation}",
                     "applyReason": "${form.applyReason}",
+                    "applicationDocument": "${form.applicationDocument}",
                     "firstOptIn": "${form.firstOptIn}",
                     "secondOptIn": "${form.secondOptIn}",
                     "onSelectEvent": "second-declaration-selected"
@@ -856,6 +884,7 @@
                     "applicationNumber": "${form.applicationNumber}",
                     "relation": "${form.relation}",
                     "applyReason": "${form.applyReason}",
+                    "applicationDocument": "${form.applicationDocument}",
                     "firstOptIn": "${form.firstOptIn}",
                     "secondOptIn": "${form.secondOptIn}"
                   }
@@ -888,6 +917,13 @@
         "applyReason": {
           "type": "string",
           "__example__": ""
+        },
+        "applicationDocument": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "__example__": []
         },
         "firstOptIn": {
           "type": "boolean",

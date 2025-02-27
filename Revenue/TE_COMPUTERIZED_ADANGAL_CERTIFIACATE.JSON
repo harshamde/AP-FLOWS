@@ -269,6 +269,10 @@
           "type": "boolean",
           "__example__": false
         },
+        "firstContaintText": {
+          "type": "string",
+          "__example__": "నేను (దరఖాస్తుదారు), సమర్పించిన సమాచారం/పత్రాలు నా సమ్మతితో ఉన్నాయని మరియు ధృవీకరించబడతాయని అంగీకరిస్తున్నాను."
+        },
         "extraDetails": {
           "type": "string",
           "__example__": ""
@@ -1076,6 +1080,18 @@
         "isFooterButtonVisible": {
           "type": "boolean",
           "__example__": false
+        },
+        "upoadDocumentLabel": {
+          "type": "string",
+          "__example__": "Upload Document"
+        },
+        "uploadDocumentDescription": {
+          "type": "string",
+          "__example__": "Upload your application form"
+        },
+        "isUploadDocumentVisible": {
+          "type": "boolean",
+          "__example__": true
         }
       },
       "id": "APPLICANT_DETAILS",
@@ -1117,6 +1133,7 @@
                     "presentPostalOffice": "${data.presentPostalOffice}",
                     "presentPostalVillage": "${data.presentPostalVillage}",
                     "extraDetails": "${data.extraDetails}",
+                    "uploadDocumentOutPut": "${form.uploadDocumentOutPut}",
                     "consentOne": "${form.consentOne}",
                     "authorityConsent": "${form.authorityConsent}",
                     "onSelectAction": "previousItems"
@@ -1147,6 +1164,7 @@
                     "presentPostalOffice": "${data.presentPostalOffice}",
                     "presentPostalVillage": "${data.presentPostalVillage}",
                     "extraDetails": "${data.extraDetails}",
+                    "uploadDocumentOutPut": "${form.uploadDocumentOutPut}",
                     "consentOne": "${form.consentOne}",
                     "authorityConsent": "${form.authorityConsent}",
                     "onSelectAction": "nextItems"
@@ -1157,12 +1175,21 @@
                 "type": "EmbeddedLink"
               },
               {
+                "max-file-size-kb": 1024,
+                "label": "${data.upoadDocumentLabel}",
+                "name": "uploadDocumentOutPut",
+                "description": "${data.uploadDocumentDescription}",
+                "allowed-mime-types": [
+                  "application/pdf"
+                ],
+                "min-uploaded-documents": 1,
+                "max-uploaded-documents": 1,
+                "visible": "${data.isUploadDocumentVisible}",
+                "type": "DocumentPicker"
+              },
+              {
                 "on-click-action": {
-                  "name": "navigate",
-                  "next": {
-                    "type": "screen",
-                    "name": "APPLICANT_CONSENT"
-                  },
+                  "name": "data_exchange",
                   "payload": {
                     "selectedDistrict": "${data.selectedDistrict}",
                     "selectedMandal": "${data.selectedMandal}",
@@ -1181,8 +1208,10 @@
                     "presentPostalOffice": "${data.presentPostalOffice}",
                     "presentPostalVillage": "${data.presentPostalVillage}",
                     "extraDetails": "${data.extraDetails}",
+                    "uploadDocumentOutPut": "${form.uploadDocumentOutPut}",
                     "consentOne": "${form.consentOne}",
-                    "authorityConsent": "${form.authorityConsent}"
+                    "authorityConsent": "${form.authorityConsent}",
+                    "onSelectAction": "consentFirst"
                   }
                 },
                 "label": "నేను (దరఖాస్తుదారు), సమర్పించిన సమాచారం/పత్రాలు నా సమ్మతితో ఉన్నాయని మరియు ధృవీకరించబడతాయని అంగీకరిస్తున్నాను.",
@@ -1192,11 +1221,7 @@
               },
               {
                 "on-click-action": {
-                  "name": "navigate",
-                  "next": {
-                    "type": "screen",
-                    "name": "AUTHORITY_CONSENT"
-                  },
+                  "name": "data_exchange",
                   "payload": {
                     "selectedDistrict": "${data.selectedDistrict}",
                     "selectedMandal": "${data.selectedMandal}",
@@ -1215,11 +1240,13 @@
                     "presentPostalOffice": "${data.presentPostalOffice}",
                     "presentPostalVillage": "${data.presentPostalVillage}",
                     "extraDetails": "${data.extraDetails}",
+                    "uploadDocumentOutPut": "${form.uploadDocumentOutPut}",
                     "consentOne": "${form.consentOne}",
-                    "authorityConsent": "${form.authorityConsent}"
+                    "authorityConsent": "${form.authorityConsent}",
+                    "onSelectAction": "consentSecond"
                   }
                 },
-                "label": "నేను (ధృవీకరిస్తున్న అధికారి), పైన ఇచ్చిన వివరాలు సరైనవని మరియు పూర్తిగా ఉన్నాయని దీని ద్వారా ప్రకటిస్తున్నాను. వాస్తవాలను తప్పుగా సూచించినట్లయితే దానికి నేను బాధ్యత వహిస్తాను మరియు శిక్షార్హమైన చర్యకు బాధ్యత వహిస్తాను.",
+                "label": "నేను (అథారిటీని ధృవీకరించండి), పైన ఇచ్చిన వివరాలు సరైనవని మరియు పూర్తి అని దీని ద్వారా ప్రకటిస్తున్నాను.",
                 "name": "authorityConsent",
                 "required": true,
                 "type": "OptIn"
@@ -1245,6 +1272,7 @@
                     "presentPostalOffice": "${data.presentPostalOffice}",
                     "presentPostalVillage": "${data.presentPostalVillage}",
                     "extraDetails": "${data.extraDetails}",
+                    "uploadDocumentOutPut": "${form.uploadDocumentOutPut}",
                     "consentOne": "${form.consentOne}",
                     "authorityConsent": "${form.authorityConsent}"
                   }
@@ -1265,6 +1293,13 @@
     },
     {
       "data": {
+        "uploadDocumentOutPut": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "__example__": []
+        },
         "consentOne": {
           "type": "boolean",
           "__example__": false
@@ -1343,6 +1378,10 @@
         "extraDetails": {
           "type": "string",
           "__example__": ""
+        },
+        "firstContaintText": {
+          "type": "string",
+          "__example__": "నేను (దరఖాస్తుదారు), సమర్పించిన సమాచారం/పత్రాలు నా సమ్మతితో ఉన్నాయని మరియు ధృవీకరించబడతాయని అంగీకరిస్తున్నాను."
         }
       },
       "id": "APPLICANT_CONSENT",
@@ -1355,7 +1394,7 @@
             "name": "form",
             "children": [
               {
-                "text": "నేను (దరఖాస్తుదారు), సమర్పించిన సమాచారం/పత్రాలు నా సమ్మతితో ఉన్నాయని మరియు ధృవీకరించబడతాయని అంగీకరిస్తున్నాను.",
+                "text": "${data.firstContaintText}",
                 "type": "TextBody"
               }
             ],
@@ -1369,6 +1408,13 @@
     },
     {
       "data": {
+        "uploadDocumentOutPut": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "__example__": []
+        },
         "consentOne": {
           "type": "boolean",
           "__example__": false
@@ -1447,6 +1493,10 @@
         "extraDetails": {
           "type": "string",
           "__example__": ""
+        },
+        "secondContaintText": {
+          "type": "string",
+          "__example__": "నేను (అథారిటీని ధృవీకరించండి), పైన ఇచ్చిన వివరాలు సరైనవని మరియు పూర్తి అని దీని ద్వారా ప్రకటిస్తున్నాను. వాస్తవాలను తప్పుగా సూచించినట్లయితే నేను బాధ్యత వహిస్తాను మరియు శిక్షార్హమైన చర్యకు బాధ్యత వహిస్తాను."
         }
       },
       "id": "AUTHORITY_CONSENT",
@@ -1459,7 +1509,7 @@
             "name": "form",
             "children": [
               {
-                "text": " నేను (ధృవీకరిస్తున్న అధికారి), పైన ఇచ్చిన వివరాలు సరైనవని మరియు పూర్తిగా ఉన్నాయని దీని ద్వారా ప్రకటిస్తున్నాను. వాస్తవాలను తప్పుగా సూచించినట్లయితే దానికి నేను బాధ్యత వహిస్తాను మరియు శిక్షార్హమైన చర్యకు బాధ్యత వహిస్తాను.",
+                "text": "${data.secondContaintText}",
                 "type": "TextBody"
               }
             ],

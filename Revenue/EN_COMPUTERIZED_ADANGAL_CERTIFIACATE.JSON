@@ -1076,6 +1076,30 @@
                 "isFooterButtonVisible": {
                     "type": "boolean",
                     "__example__": false
+                },
+                "UploadDocumentLable": {
+                    "type": "string",
+                    "__example__": "Upload Document"
+                },
+                "documentDescription": {
+                    "type": "string",
+                    "__example__": "Document Description"
+                },
+                "isDocumentUploadVisible": {
+                    "type": "boolean",
+                    "__example__": true
+                },
+                "upoadDocumentLabel": {
+                    "type": "string",
+                    "__example__": "Upload Document"
+                },
+                "isUploadDocumentVisible": {
+                    "type": "boolean",
+                    "__example__": false
+                },
+                "uploadDocumentDescription": {
+                    "type": "string",
+                    "__example__": "Document Description "
                 }
             },
             "id": "APPLICANT_DETAILS",
@@ -1117,6 +1141,7 @@
                                         "presentPostalOffice": "${data.presentPostalOffice}",
                                         "presentPostalVillage": "${data.presentPostalVillage}",
                                         "extraDetails": "${data.extraDetails}",
+                                        "uploadDocumentOutPut": "${form.uploadDocumentOutPut}",
                                         "consentOne": "${form.consentOne}",
                                         "authorityConsent": "${form.authorityConsent}",
                                         "onSelectAction": "previousItems"
@@ -1147,6 +1172,7 @@
                                         "presentPostalOffice": "${data.presentPostalOffice}",
                                         "presentPostalVillage": "${data.presentPostalVillage}",
                                         "extraDetails": "${data.extraDetails}",
+                                        "uploadDocumentOutPut": "${form.uploadDocumentOutPut}",
                                         "consentOne": "${form.consentOne}",
                                         "authorityConsent": "${form.authorityConsent}",
                                         "onSelectAction": "nextItems"
@@ -1157,12 +1183,18 @@
                                 "type": "EmbeddedLink"
                             },
                             {
+                                "max-file-size-kb": 1024,
+                                "label": "${data.upoadDocumentLabel}",
+                                "max-uploaded-documents": 1,
+                                "min-uploaded-documents": 1,
+                                "visible": "${data.isUploadDocumentVisible}",
+                                "name": "uploadDocumentOutPut",
+                                "description": "${data.uploadDocumentDescription}",
+                                "type": "DocumentPicker"
+                            },
+                            {
                                 "on-click-action": {
-                                    "name": "navigate",
-                                    "next": {
-                                        "type": "screen",
-                                        "name": "APPLICANT_CONSENT"
-                                    },
+                                    "name": "data_exchange",
                                     "payload": {
                                         "selectedDistrict": "${data.selectedDistrict}",
                                         "selectedMandal": "${data.selectedMandal}",
@@ -1181,8 +1213,10 @@
                                         "presentPostalOffice": "${data.presentPostalOffice}",
                                         "presentPostalVillage": "${data.presentPostalVillage}",
                                         "extraDetails": "${data.extraDetails}",
+                                        "uploadDocumentOutPut": "${form.uploadDocumentOutPut}",
                                         "consentOne": "${form.consentOne}",
-                                        "authorityConsent": "${form.authorityConsent}"
+                                        "authorityConsent": "${form.authorityConsent}",
+                                        "onSelectAction": "consentFirst"
                                     }
                                 },
                                 "label": "I (the applicant), acknowledge that the information/documents submitted are with my consent and verified.",
@@ -1192,11 +1226,7 @@
                             },
                             {
                                 "on-click-action": {
-                                    "name": "navigate",
-                                    "next": {
-                                        "type": "screen",
-                                        "name": "AUTHORITY_CONSENT"
-                                    },
+                                    "name": "data_exchange",
                                     "payload": {
                                         "selectedDistrict": "${data.selectedDistrict}",
                                         "selectedMandal": "${data.selectedMandal}",
@@ -1215,8 +1245,10 @@
                                         "presentPostalOffice": "${data.presentPostalOffice}",
                                         "presentPostalVillage": "${data.presentPostalVillage}",
                                         "extraDetails": "${data.extraDetails}",
+                                        "uploadDocumentOutPut": "${form.uploadDocumentOutPut}",
                                         "consentOne": "${form.consentOne}",
-                                        "authorityConsent": "${form.authorityConsent}"
+                                        "authorityConsent": "${form.authorityConsent}",
+                                        "onSelectAction": "consentSecond"
                                     }
                                 },
                                 "label": "I (Verify Authority), hereby declare that the particulars given above are correct and complete.",
@@ -1245,6 +1277,7 @@
                                         "presentPostalOffice": "${data.presentPostalOffice}",
                                         "presentPostalVillage": "${data.presentPostalVillage}",
                                         "extraDetails": "${data.extraDetails}",
+                                        "uploadDocumentOutPut": "${form.uploadDocumentOutPut}",
                                         "consentOne": "${form.consentOne}",
                                         "authorityConsent": "${form.authorityConsent}"
                                     }
@@ -1265,6 +1298,13 @@
         },
         {
             "data": {
+                "uploadDocumentOutPut": {
+                    "type": "array",
+                    "items": {
+                        "type": "object"
+                    },
+                    "__example__": []
+                },
                 "consentOne": {
                     "type": "boolean",
                     "__example__": false
@@ -1343,6 +1383,10 @@
                 "extraDetails": {
                     "type": "string",
                     "__example__": ""
+                },
+                "firstContaintText": {
+                    "type": "string",
+                    "__example__": "I (the applicant), acknowledge that the information/documents submitted are with my consent and verified."
                 }
             },
             "id": "APPLICANT_CONSENT",
@@ -1355,7 +1399,7 @@
                         "name": "form",
                         "children": [
                             {
-                                "text": "I (the applicant), acknowledge that the information/documents submitted are with my consent and verified.",
+                                "text": "${data.firstContaintText}",
                                 "type": "TextBody"
                             }
                         ],
@@ -1369,6 +1413,13 @@
         },
         {
             "data": {
+                "uploadDocumentOutPut": {
+                    "type": "array",
+                    "items": {
+                        "type": "object"
+                    },
+                    "__example__": []
+                },
                 "consentOne": {
                     "type": "boolean",
                     "__example__": false
@@ -1447,6 +1498,10 @@
                 "extraDetails": {
                     "type": "string",
                     "__example__": ""
+                },
+                "secondContaintText": {
+                    "type": "string",
+                    "__example__": "I (Verify Authority), hereby declare that the particulars given above are correct and complete. Any misrepresentation of facts will make me liable and liable for punitive action."
                 }
             },
             "id": "AUTHORITY_CONSENT",
@@ -1459,7 +1514,7 @@
                         "name": "form",
                         "children": [
                             {
-                                "text": "I (Verify Authority), hereby declare that the particulars given above are correct and complete. Any misrepresentation of facts will make me liable and liable for punitive action.",
+                                "text": "${data.secondContaintText}",
                                 "type": "TextBody"
                             }
                         ],

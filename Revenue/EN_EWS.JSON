@@ -3,12 +3,16 @@
     "routing_model": {
         "BASIC_DETAILS": [
             "APPLICATION_FORM",
-            "TERMS_AND_CONDITION"
+            "TERMS_AND_CONDITION",
+            "UPLOAD_DOCUMENT"
         ],
         "APPLICATION_FORM": [
-            "TERMS_AND_CONDITION"
+            "TERMS_AND_CONDITION",
+            "UPLOAD_DOCUMENT"
         ],
-        "TERMS_AND_CONDITION": []
+        "TERMS_AND_CONDITION": [
+            "UPLOAD_DOCUMENT"
+        ]
     },
     "data_api_version": "3.0",
     "screens": [
@@ -732,7 +736,8 @@
                                 "name": "incomeCertificateDetails",
                                 "required": true,
                                 "input-type": "number",
-                                "type": "TextInput"
+                                "type": "TextInput",
+                                "max-chars": 9
                             },
                             {
                                 "text": "Assets Information (Applicant/His/Her/Family)",
@@ -922,7 +927,7 @@
                             },
                             {
                                 "on-click-action": {
-                                    "name": "complete",
+                                    "name": "data_exchange",
                                     "payload": {
                                         "whatsAppNumber": "${data.whatsAppNumber}",
                                         "postalOffice": "${data.postalOffice}",
@@ -950,7 +955,7 @@
                                         "IVerifyAuthority": "${form.IVerifyAuthority}"
                                     }
                                 },
-                                "label": "Submit",
+                                "label": "Continue.",
                                 "type": "Footer"
                             }
                         ],
@@ -960,8 +965,7 @@
                         }
                     }
                 ]
-            },
-            "terminal": true
+            }
         },
         {
             "data": {
@@ -1095,6 +1099,320 @@
                     }
                 ]
             }
+        },
+        {
+            "data": {
+                "rationCardNumber": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "subCaste": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "revenueVillageWard": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "incomeCertificateDetails": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "AcresOfAgriculture": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "residentialFlat": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "residentialPlotOneYards": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "residentialPlotTwoYards": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "knowledge": {
+                    "type": "boolean",
+                    "__example__": false
+                },
+                "isOBCCast": {
+                    "type": "boolean",
+                    "__example__": false
+                },
+                "iAgreeThatInformationIsCorrect": {
+                    "type": "boolean",
+                    "__example__": false
+                },
+                "IVerifyAuthority": {
+                    "type": "boolean",
+                    "__example__": false
+                },
+                "whatsAppNumber": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "postalOffice": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "postalVillage": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "isSameAsPermanentAddress": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "__example__": []
+                },
+                "presentDoorNoAndStrretName": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "district": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "presentMandalAndMunicipality": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "presentVillageOrWardOrSecretariat": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "pinCode": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "presentPostalOffice": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "presentPostalVillage": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "extraDetails": {
+                    "type": "string",
+                    "__example__": ""
+                },
+                "isFooterEnabled": {
+                    "type": "boolean",
+                    "__example__": false
+                },
+                "isOptInVisible": {
+                    "type": "boolean",
+                    "__example__": false
+                },
+                "currentUpload": {
+                    "type": "string",
+                    "__example__": "applicationForm"
+                },
+                "documentUploadTextBody": {
+                    "type": "string",
+                    "__example__": "applicationForm"
+                }
+            },
+            "id": "UPLOAD_DOCUMENT",
+            "title": "Upload Document",
+            "layout": {
+                "type": "SingleColumnLayout",
+                "children": [
+                    {
+                        "type": "Form",
+                        "name": "form",
+                        "children": [
+                            {
+                                "text": "${data.documentUploadTextBody}",
+                                "type": "TextBody"
+                            },
+                            {
+                                "type": "Switch",
+                                "value": "${data.currentUpload}",
+                                "cases": {
+                                    "applicationForm": [
+                                        {
+                                            "type": "DocumentPicker",
+                                            "name": "applicationForm",
+                                            "label": "Application Form",
+                                            "min-uploaded-documents": 1,
+                                            "max-uploaded-documents": 1,
+                                            "description": "Please upload your application form.  (Note: Only in PDF format, maximum size 1MB.)",
+                                            "max-file-size-kb": 1000,
+                                            "allowed-mime-types": [
+                                                "application/pdf"
+                                            ]
+                                        },
+                                        {
+                                            "type": "EmbeddedLink",
+                                            "text": "Upload",
+                                            "on-click-action": {
+                                                "name": "data_exchange",
+                                                "payload": {
+                                                    "applicationForm": "${form.applicationForm}",
+                                                    "current_selected": "applicationForm"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "rationCard": [
+                                        {
+                                            "type": "DocumentPicker",
+                                            "name": "rationCard",
+                                            "label": "Ration card /EPIC Card/AADHAR Card",
+                                            "description": "Ration card /EPIC Card/AADHAR Card.  (Note: Only in PDF format, maximum size 1MB.)",
+                                            "min-uploaded-documents": 1,
+                                            "max-uploaded-documents": 1,
+                                            "max-file-size-kb": 1000,
+                                            "allowed-mime-types": [
+                                                "application/pdf"
+                                            ]
+                                        },
+                                        {
+                                            "type": "EmbeddedLink",
+                                            "text": "Upload",
+                                            "on-click-action": {
+                                                "name": "data_exchange",
+                                                "payload": {
+                                                    "rationCard": "${form.rationCard}",
+                                                    "current_selected": "rationCard"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "otherDocument": [
+                                        {
+                                            "type": "DocumentPicker",
+                                            "name": "otherDocument",
+                                            "label": "IT Returns, Pay Slips, or any other document.",
+                                            "description": "Please upload your IT Returns, Pay Slips, or any other document.  (Note: Only in PDF format, maximum size 1MB.)",
+                                            "min-uploaded-documents": 1,
+                                            "max-uploaded-documents": 1,
+                                            "max-file-size-kb": 1000,
+                                            "allowed-mime-types": [
+                                                "application/pdf"
+                                            ]
+                                        },
+                                        {
+                                            "type": "EmbeddedLink",
+                                            "text": "Upload",
+                                            "on-click-action": {
+                                                "name": "data_exchange",
+                                                "payload": {
+                                                    "otherDocument": "${form.otherDocument}",
+                                                    "current_selected": "otherDocument"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "Affidavit": [
+                                        {
+                                            "type": "DocumentPicker",
+                                            "name": "Affidavit",
+                                            "label": "Affidavit",
+                                            "description": "Please upload your Affidavit.  (Note: Only in PDF format, maximum size 1MB.)",
+                                            "min-uploaded-documents": 1,
+                                            "max-uploaded-documents": 1,
+                                            "max-file-size-kb": 1000,
+                                            "allowed-mime-types": [
+                                                "application/pdf"
+                                            ]
+                                        },
+                                        {
+                                            "type": "EmbeddedLink",
+                                            "text": "Upload",
+                                            "on-click-action": {
+                                                "name": "data_exchange",
+                                                "payload": {
+                                                    "Affidavit": "${form.Affidavit}",
+                                                    "current_selected": "Affidavit"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "photo": [
+                                        {
+                                            "type": "PhotoPicker",
+                                            "name": "photo",
+                                            "label": "Please upload  your photo.",
+                                            "description": "Please upload your photo.  (Note: Only in JPG/JPEG/PNG format.)",
+                                            "min-uploaded-photos": 1,
+                                            "max-uploaded-photos": 1,
+                                            "max-file-size-kb": 1000
+                                        },
+                                        {
+                                            "type": "EmbeddedLink",
+                                            "text": "Upload",
+                                            "on-click-action": {
+                                                "name": "data_exchange",
+                                                "payload": {
+                                                    "photo": "${form.photo}",
+                                                    "current_selected": "photo"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "default": [
+                                        {
+                                            "type": "TextHeading",
+                                            "text": "Invalid Document Upload"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "on-click-action": {
+                                    "name": "complete",
+                                    "payload": {
+                                        "rationCardNumber": "${data.rationCardNumber}",
+                                        "subCaste": "${data.subCaste}",
+                                        "revenueVillageWard": "${data.revenueVillageWard}",
+                                        "incomeCertificateDetails": "${data.incomeCertificateDetails}",
+                                        "AcresOfAgriculture": "${data.AcresOfAgriculture}",
+                                        "residentialFlat": "${data.residentialFlat}",
+                                        "residentialPlotOneYards": "${data.residentialPlotOneYards}",
+                                        "residentialPlotTwoYards": "${data.residentialPlotTwoYards}",
+                                        "knowledge": "${data.knowledge}",
+                                        "isOBCCast": "${data.isOBCCast}",
+                                        "iAgreeThatInformationIsCorrect": "${data.iAgreeThatInformationIsCorrect}",
+                                        "IVerifyAuthority": "${data.IVerifyAuthority}",
+                                        "whatsAppNumber": "${data.whatsAppNumber}",
+                                        "postalOffice": "${data.postalOffice}",
+                                        "postalVillage": "${data.postalVillage}",
+                                        "isSameAsPermanentAddress": "${data.isSameAsPermanentAddress}",
+                                        "presentDoorNoAndStrretName": "${data.presentDoorNoAndStrretName}",
+                                        "district": "${data.district}",
+                                        "presentMandalAndMunicipality": "${data.presentMandalAndMunicipality}",
+                                        "presentVillageOrWardOrSecretariat": "${data.presentVillageOrWardOrSecretariat}",
+                                        "pinCode": "${data.pinCode}",
+                                        "presentPostalOffice": "${data.presentPostalOffice}",
+                                        "presentPostalVillage": "${data.presentPostalVillage}",
+                                        "extraDetails": "${data.extraDetails}",
+                                        "applicationForm": "${form.applicationForm}",
+                                        "rationCard": "${form.rationCard}",
+                                        "otherDocument": "${form.otherDocument}",
+                                        "Affidavit": "${form.Affidavit}",
+                                        "photo": "${form.photo}"
+                                    }
+                                },
+                                "enabled": "${data.isFooterEnabled}",
+                                "label": "Submit",
+                                "type": "Footer"
+                            }
+                        ],
+                        "init-values": {
+                            "whatsAppNumber": "${data.initWhatsAppNumber}",
+                            "presentDoorNoAndStrretName": "${data.initDoorAndStreetNam}"
+                        }
+                    }
+                ]
+            },
+            "terminal": true
         }
     ]
 }

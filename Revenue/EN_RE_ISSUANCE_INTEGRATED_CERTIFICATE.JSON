@@ -781,6 +781,18 @@
         "isRelationListEnabled": {
           "type": "boolean",
           "__example__": true
+        },
+        "documentLabel": {
+          "type": "string",
+          "__example__": "documentLabel"
+        },
+        "documentDescription": {
+          "type": "string",
+          "__example__": "documentDescription"
+        },
+        "isDocumentUploadVisible": {
+          "type": "boolean",
+          "__example__": false
         }
       },
       "id": "APPLICATION_FORM",
@@ -842,6 +854,7 @@
                     "relation": "${form.relation}",
                     "applySubReason": "${form.applySubReason}",
                     "otp": "${form.otp}",
+                    "applicationDocument": "${form.applicationDocument}",
                     "firstOptIn": "${form.firstOptIn}",
                     "secondOptIn": "${form.secondOptIn}",
                     "onSelectEvent": "address-type-selected"
@@ -878,6 +891,7 @@
                     "relation": "${form.relation}",
                     "applySubReason": "${form.applySubReason}",
                     "otp": "${form.otp}",
+                    "applicationDocument": "${form.applicationDocument}",
                     "firstOptIn": "${form.firstOptIn}",
                     "secondOptIn": "${form.secondOptIn}",
                     "onSelectEvent": "village-selected"
@@ -913,6 +927,7 @@
                     "relation": "${form.relation}",
                     "applySubReason": "${form.applySubReason}",
                     "otp": "${form.otp}",
+                    "applicationDocument": "${form.applicationDocument}",
                     "firstOptIn": "${form.firstOptIn}",
                     "secondOptIn": "${form.secondOptIn}",
                     "onSelectEvent": "apply-reason-selected"
@@ -975,6 +990,7 @@
                     "relation": "${form.relation}",
                     "applySubReason": "${form.applySubReason}",
                     "otp": "${form.otp}",
+                    "applicationDocument": "${form.applicationDocument}",
                     "firstOptIn": "${form.firstOptIn}",
                     "secondOptIn": "${form.secondOptIn}",
                     "onSelectEvent": "get-details-link-selected"
@@ -1007,6 +1023,7 @@
                     "relation": "${form.relation}",
                     "applySubReason": "${form.applySubReason}",
                     "otp": "${form.otp}",
+                    "applicationDocument": "${form.applicationDocument}",
                     "firstOptIn": "${form.firstOptIn}",
                     "secondOptIn": "${form.secondOptIn}",
                     "onSelectEvent": "resend-otp-link-selected"
@@ -1020,6 +1037,19 @@
                 "text": "${data.applicantDetailsTextBody}",
                 "visible": "${data.isApplicantDetailsTextBodyVisible}",
                 "type": "TextBody"
+              },
+              {
+                "max-file-size-kb": 1024,
+                "max-uploaded-documents": 1,
+                "min-uploaded-documents": 1,
+                "allowed-mime-types": [
+                  "application/pdf"
+                ],
+                "description": "${data.documentDescription}",
+                "label": "${data.documentDescription}",
+                "name": "applicationDocument",
+                "visible": "${data.isDocumentUploadVisible}",
+                "type": "DocumentPicker"
               },
               {
                 "on-click-action": {
@@ -1044,6 +1074,7 @@
                     "relation": "${form.relation}",
                     "applySubReason": "${form.applySubReason}",
                     "otp": "${form.otp}",
+                    "applicationDocument": "${form.applicationDocument}",
                     "firstOptIn": "${form.firstOptIn}",
                     "secondOptIn": "${form.secondOptIn}",
                     "onSelectEvent": "first-declaration-selected"
@@ -1078,6 +1109,7 @@
                     "relation": "${form.relation}",
                     "applySubReason": "${form.applySubReason}",
                     "otp": "${form.otp}",
+                    "applicationDocument": "${form.applicationDocument}",
                     "firstOptIn": "${form.firstOptIn}",
                     "secondOptIn": "${form.secondOptIn}",
                     "onSelectEvent": "second-declaration-selected"
@@ -1112,6 +1144,7 @@
                     "relation": "${form.relation}",
                     "applySubReason": "${form.applySubReason}",
                     "otp": "${form.otp}",
+                    "applicationDocument": "${form.applicationDocument}",
                     "firstOptIn": "${form.firstOptIn}",
                     "secondOptIn": "${form.secondOptIn}"
                   }
@@ -1161,6 +1194,13 @@
         "otp": {
           "type": "string",
           "__example__": ""
+        },
+        "applicationDocument": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "__example__": []
         },
         "firstOptIn": {
           "type": "boolean",
