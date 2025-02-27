@@ -2,9 +2,13 @@
 	"version": "6.1",
 	"routing_model": {
 		"BASIC_DETAILS": [
-			"APPLICATION_FORM"
+			"APPLICATION_FORM",
+			"UPLOAD_DOCUMENT"
 		],
-		"APPLICATION_FORM": []
+		"APPLICATION_FORM": [
+			"UPLOAD_DOCUMENT"
+		],
+		"UPLOAD_DOCUMENT": []
 	},
 	"data_api_version": "3.0",
 	"screens": [
@@ -1214,7 +1218,7 @@
 							},
 							{
 								"on-click-action": {
-									"name": "complete",
+									"name": "data_exchange",
 									"payload": {
 										"whatsAppNumber": "${data.whatsAppNumber}",
 										"postalOffice": "${data.postalOffice}",
@@ -1243,6 +1247,266 @@
 										"totalTaxPaid": "${form.totalTaxPaid}",
 										"fourWheeler": "${form.fourWheeler}",
 										"fourWheelerNumbers": "${form.fourWheelerNumbers}"
+									}
+								},
+								"label": "సమర్పించండి",
+								"enabled": "${data.isFooterEnabled}",
+								"type": "Footer"
+							}
+						],
+						"init-values": {
+							"whatsAppNumber": "${data.initWhatsAppNumber}",
+							"presentDoorNoAndStrretName": "${data.initDoorAndStreetNam}",
+							"familyMember": "${data.initFamilyMember}",
+							"memberName": "${data.initMemberName}",
+							"teluguName": "${data.initTeluguName}",
+							"gender": "${data.initGender}",
+							"relationship": "${data.initRelationship}",
+							"dob": "${data.initDob}",
+							"memberMobileNumber": "${data.initMobileNumber}",
+							"annualIncome": "${data.initAnnualIncome}",
+							"wetLand": "${data.initWetLand}",
+							"dryLand": "${data.initDryLand}",
+							"totalTaxPaid": "${data.initSqFtForTaxPaid}",
+							"fourWheeler": "${data.initFourWheeler}",
+							"fourWheelerNumbers": "${data.initFourWheelerNumbers}"
+						}
+					}
+				]
+			}
+		},
+		{
+			"data": {
+				"uhid": {
+					"type": "string",
+					"__example__": ""
+				},
+				"familyMember": {
+					"type": "string",
+					"__example__": ""
+				},
+				"memberName": {
+					"type": "string",
+					"__example__": ""
+				},
+				"teluguName": {
+					"type": "string",
+					"__example__": ""
+				},
+				"gender": {
+					"type": "string",
+					"__example__": ""
+				},
+				"relationship": {
+					"type": "string",
+					"__example__": ""
+				},
+				"dob": {
+					"type": "string",
+					"__example__": ""
+				},
+				"memberMobileNumber": {
+					"type": "string",
+					"__example__": ""
+				},
+				"isPayingIncomeTax": {
+					"type": "string",
+					"__example__": ""
+				},
+				"annualIncome": {
+					"type": "string",
+					"__example__": ""
+				},
+				"wetLand": {
+					"type": "string",
+					"__example__": ""
+				},
+				"dryLand": {
+					"type": "string",
+					"__example__": ""
+				},
+				"totalTaxPaid": {
+					"type": "string",
+					"__example__": ""
+				},
+				"fourWheeler": {
+					"type": "string",
+					"__example__": ""
+				},
+				"fourWheelerNumbers": {
+					"type": "string",
+					"__example__": ""
+				},
+				"whatsAppNumber": {
+					"type": "string",
+					"__example__": ""
+				},
+				"postalOffice": {
+					"type": "string",
+					"__example__": ""
+				},
+				"postalVillage": {
+					"type": "string",
+					"__example__": ""
+				},
+				"isSameAsPermanentAddress": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"__example__": []
+				},
+				"presentDoorNoAndStrretName": {
+					"type": "string",
+					"__example__": ""
+				},
+				"district": {
+					"type": "string",
+					"__example__": ""
+				},
+				"presentMandalAndMunicipality": {
+					"type": "string",
+					"__example__": ""
+				},
+				"presentVillageOrWardOrSecretariat": {
+					"type": "string",
+					"__example__": ""
+				},
+				"pinCode": {
+					"type": "string",
+					"__example__": ""
+				},
+				"presentPostalOffice": {
+					"type": "string",
+					"__example__": ""
+				},
+				"presentPostalVillage": {
+					"type": "string",
+					"__example__": ""
+				},
+				"extraDetails": {
+					"type": "string",
+					"__example__": ""
+				},
+				"uploadDocumentBodyText": {
+					"type": "string",
+					"__example__": "uploadDocumentBodyText"
+				},
+				"currentUpload": {
+					"type": "string",
+					"__example__": "familyPhoto"
+				},
+				"isFooterEnabled": {
+					"type": "boolean",
+					"__example__": false
+				}
+			},
+			"id": "UPLOAD_DOCUMENT",
+			"title": "పత్రాన్ని అప్‌లోడ్ చేయండి",
+			"layout": {
+				"type": "SingleColumnLayout",
+				"children": [
+					{
+						"type": "Form",
+						"name": "form",
+						"children": [
+							{
+								"text": "${data.uploadDocumentBodyText}",
+								"type": "TextBody"
+							},
+							{
+								"type": "Switch",
+								"value": "${data.currentUpload}",
+								"cases": {
+									"familyPhoto": [
+										{
+											"type": "DocumentPicker",
+											"name": "familyPhoto",
+											"label": "కుటుంబ ఫోటో",
+											"min-uploaded-documents": 1,
+											"max-uploaded-documents": 1,
+											"max-file-size-kb": 1000,
+											"allowed-mime-types": [
+												"image/jpeg"
+											]
+										},
+										{
+											"type": "EmbeddedLink",
+											"text": "అప్‌లోడ్ చేయండి",
+											"on-click-action": {
+												"name": "data_exchange",
+												"payload": {
+													"familyPhoto": "${form.familyPhoto}",
+													"current_selected": "familyPhoto"
+												}
+											}
+										}
+									],
+									"addhaarCard": [
+										{
+											"type": "DocumentPicker",
+											"name": "addhaarCard",
+											"label": "ఆధార్ కార్డ్",
+											"min-uploaded-documents": 1,
+											"max-uploaded-documents": 1,
+											"max-file-size-kb": 1000,
+											"allowed-mime-types": [
+												"application/pdf"
+											]
+										},
+										{
+											"type": "EmbeddedLink",
+											"text": "Upload",
+											"on-click-action": {
+												"name": "data_exchange",
+												"payload": {
+													"addhaarCard": "${form.addhaarCard}",
+													"current_selected": "addhaarCard"
+												}
+											}
+										}
+									],
+									"default": [
+										{
+											"type": "TextHeading",
+											"text": "Invalid Document Upload"
+										}
+									]
+								}
+							},
+							{
+								"on-click-action": {
+									"name": "complete",
+									"payload": {
+										"uhid": "${data.uhid}",
+										"familyMember": "${data.familyMember}",
+										"memberName": "${data.memberName}",
+										"teluguName": "${data.teluguName}",
+										"gender": "${data.gender}",
+										"relationship": "${data.relationship}",
+										"dob": "${data.dob}",
+										"memberMobileNumber": "${data.memberMobileNumber}",
+										"isPayingIncomeTax": "${data.isPayingIncomeTax}",
+										"annualIncome": "${data.annualIncome}",
+										"wetLand": "${data.wetLand}",
+										"dryLand": "${data.dryLand}",
+										"totalTaxPaid": "${data.totalTaxPaid}",
+										"fourWheeler": "${data.fourWheeler}",
+										"fourWheelerNumbers": "${data.fourWheelerNumbers}",
+										"whatsAppNumber": "${data.whatsAppNumber}",
+										"postalOffice": "${data.postalOffice}",
+										"postalVillage": "${data.postalVillage}",
+										"isSameAsPermanentAddress": "${data.isSameAsPermanentAddress}",
+										"presentDoorNoAndStrretName": "${data.presentDoorNoAndStrretName}",
+										"district": "${data.district}",
+										"presentMandalAndMunicipality": "${data.presentMandalAndMunicipality}",
+										"presentVillageOrWardOrSecretariat": "${data.presentVillageOrWardOrSecretariat}",
+										"pinCode": "${data.pinCode}",
+										"presentPostalOffice": "${data.presentPostalOffice}",
+										"presentPostalVillage": "${data.presentPostalVillage}",
+										"extraDetails": "${data.extraDetails}",
+										"familyPhoto": "${form.familyPhoto}",
+										"addhaarCard": "${form.addhaarCard}"
 									}
 								},
 								"label": "సమర్పించండి",

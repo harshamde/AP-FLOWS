@@ -4,16 +4,22 @@
     "BASIC_DETAILS": [
       "APPLICATION_FORM",
       "BRIDE_DETAILS",
-      "BRIDEGROOM_DETAILS"
+      "BRIDEGROOM_DETAILS",
+      "DOCUMENT_UPLOAD"
     ],
     "APPLICATION_FORM": [
       "BRIDE_DETAILS",
-      "BRIDEGROOM_DETAILS"
+      "BRIDEGROOM_DETAILS",
+      "DOCUMENT_UPLOAD"
     ],
     "BRIDE_DETAILS": [
-      "BRIDEGROOM_DETAILS"
+      "BRIDEGROOM_DETAILS",
+      "DOCUMENT_UPLOAD"
     ],
-    "BRIDEGROOM_DETAILS": []
+    "BRIDEGROOM_DETAILS": [
+      "DOCUMENT_UPLOAD"
+    ],
+    "DOCUMENT_UPLOAD": []
   },
   "data_api_version": "3.0",
   "screens": [
@@ -2204,7 +2210,7 @@
               },
               {
                 "on-click-action": {
-                  "name": "complete",
+                  "name": "data_exchange",
                   "payload": {
                     "brideAadhaarNumber": "${data.brideAadhaarNumber}",
                     "selectedWitness": "${data.selectedWitness}",
@@ -2250,6 +2256,414 @@
                 },
                 "label": "సమర్పించండి",
                 "enabled": "${data.isGroomFooterButtonVisible}",
+                "type": "Footer"
+              }
+            ],
+            "init-values": {
+              "whatsAppNumber": "${data.initWhatsAppNumber}",
+              "presentDoorNoAndStrretName": "${data.initDoorAndStreetNam}",
+              "witnessAadhaarNumber": "${data.bridWitnessAadhaarInit}",
+              "witnessName": "${data.brideWitnessInitString}",
+              "witnessMiddleName": "${data.brideWitnessInitString}",
+              "witnessAddress": "${data.brideWitnessInitString}",
+              "witnessAge": "${data.brideWitnessInitString}",
+              "groomWitnessAadhaarNumber": "${data.groomWitnessAadhaarNumberInit}",
+              "groomWitnessName": "${data.groomWitnessInit}",
+              "groomWitnessMiddleName": "${data.groomWitnessInit}",
+              "groomWitnessAddress": "${data.groomWitnessInit}",
+              "groomWitnessAge": "${data.groomWitnessInit}"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "brideGroomAadhaarNumber": {
+          "type": "string",
+          "__example__": ""
+        },
+        "brideGroomSelectedWitness": {
+          "type": "string",
+          "__example__": ""
+        },
+        "groomOtp": {
+          "type": "string",
+          "__example__": ""
+        },
+        "groomWitnessAadhaarNumber": {
+          "type": "string",
+          "__example__": ""
+        },
+        "groomWitnessName": {
+          "type": "string",
+          "__example__": ""
+        },
+        "groomWitnessMiddleName": {
+          "type": "string",
+          "__example__": ""
+        },
+        "groomWitnessAddress": {
+          "type": "string",
+          "__example__": ""
+        },
+        "groomWitnessAge": {
+          "type": "string",
+          "__example__": ""
+        },
+        "groomWitnessOccupation": {
+          "type": "string",
+          "__example__": ""
+        },
+        "groomWitnessRelation": {
+          "type": "string",
+          "__example__": ""
+        },
+        "groomWitnessPhoto": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "__example__": []
+        },
+        "brideAadhaarNumber": {
+          "type": "string",
+          "__example__": ""
+        },
+        "selectedWitness": {
+          "type": "string",
+          "__example__": ""
+        },
+        "brideOtp": {
+          "type": "string",
+          "__example__": ""
+        },
+        "witnessAadhaarNumber": {
+          "type": "string",
+          "__example__": ""
+        },
+        "witnessName": {
+          "type": "string",
+          "__example__": ""
+        },
+        "witnessMiddleName": {
+          "type": "string",
+          "__example__": ""
+        },
+        "witnessAddress": {
+          "type": "string",
+          "__example__": ""
+        },
+        "witnessAge": {
+          "type": "string",
+          "__example__": ""
+        },
+        "witnessOccupation": {
+          "type": "string",
+          "__example__": ""
+        },
+        "witnessRelation": {
+          "type": "string",
+          "__example__": ""
+        },
+        "witnessPhoto": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "__example__": []
+        },
+        "marriageDate": {
+          "type": "string",
+          "__example__": ""
+        },
+        "venueOfMarriage": {
+          "type": "string",
+          "__example__": ""
+        },
+        "marriageDistrict": {
+          "type": "string",
+          "__example__": ""
+        },
+        "marriageMandal": {
+          "type": "string",
+          "__example__": ""
+        },
+        "marriageVillage": {
+          "type": "string",
+          "__example__": ""
+        },
+        "marriagePanchayat": {
+          "type": "string",
+          "__example__": ""
+        },
+        "whatsAppNumber": {
+          "type": "string",
+          "__example__": ""
+        },
+        "postalOffice": {
+          "type": "string",
+          "__example__": ""
+        },
+        "postalVillage": {
+          "type": "string",
+          "__example__": ""
+        },
+        "isSameAsPermanentAddress": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "__example__": []
+        },
+        "presentDoorNoAndStrretName": {
+          "type": "string",
+          "__example__": ""
+        },
+        "district": {
+          "type": "string",
+          "__example__": ""
+        },
+        "presentMandalAndMunicipality": {
+          "type": "string",
+          "__example__": ""
+        },
+        "presentVillageOrWardOrSecretariat": {
+          "type": "string",
+          "__example__": ""
+        },
+        "pinCode": {
+          "type": "string",
+          "__example__": ""
+        },
+        "presentPostalOffice": {
+          "type": "string",
+          "__example__": ""
+        },
+        "presentPostalVillage": {
+          "type": "string",
+          "__example__": ""
+        },
+        "extraDetails": {
+          "type": "string",
+          "__example__": ""
+        },
+        "currentUpload": {
+          "type": "string",
+          "__example__": "marriagePhoto"
+        },
+        "documentUploadBody": {
+          "type": "string",
+          "__example__": "Please upload documents"
+        },
+        "isFooterEnabled": {
+          "type": "boolean",
+          "__example__": false
+        }
+      },
+      "id": "DOCUMENT_UPLOAD",
+      "title": "డాక్యుమెంట్ అప్‌లోడ్",
+      "layout": {
+        "type": "SingleColumnLayout",
+        "children": [
+          {
+            "type": "Form",
+            "name": "form",
+            "children": [
+              {
+                "text": "${data.documentUploadBody}",
+                "type": "TextSubheading"
+              },
+              {
+                "type": "Switch",
+                "value": "${data.currentUpload}",
+                "cases": {
+                  "marriagePhoto": [
+                    {
+                      "type": "DocumentPicker",
+                      "name": "marriagePhoto",
+                      "label": "వివాహ ఫోటో",
+                      "min-uploaded-documents": 1,
+                      "max-uploaded-documents": 1,
+                      "description": "వివాహ ఫోటోను అప్‌లోడ్ చేయండి (jpg/jpeg ఆకృతిని మాత్రమే అప్‌లోడ్ చేయండి)",
+                      "max-file-size-kb": 1000,
+                      "allowed-mime-types": [
+                        "image/jpeg"
+                      ]
+                    },
+                    {
+                      "type": "EmbeddedLink",
+                      "text": "అప్‌లోడ్ చేయండి",
+                      "on-click-action": {
+                        "name": "data_exchange",
+                        "payload": {
+                          "marriagePhoto": "${form.marriagePhoto}",
+                          "current_selected": "marriagePhoto"
+                        }
+                      }
+                    }
+                  ],
+                  "marriageCard": [
+                    {
+                      "type": "DocumentPicker",
+                      "name": "marriageCard",
+                      "label": "వివాహ కార్డు",
+                      "min-uploaded-documents": 1,
+                      "max-uploaded-documents": 1,
+                      "description": "వివాహ ఆహ్వాన కార్డ్‌ని అప్‌లోడ్ చేయండి (PDF ఫార్మాట్ మాత్రమే)",
+                      "max-file-size-kb": 1004,
+                      "allowed-mime-types": [
+                        "application/pdf"
+                      ]
+                    },
+                    {
+                      "type": "EmbeddedLink",
+                      "text": "అప్‌లోడ్ చేయండి",
+                      "on-click-action": {
+                        "name": "data_exchange",
+                        "payload": {
+                          "marriageCard": "${form.marriageCard}",
+                          "current_selected": "marriageCard"
+                        }
+                      }
+                    }
+                  ],
+                  "brideAgeProof": [
+                    {
+                      "type": "DocumentPicker",
+                      "name": "brideAgeProof",
+                      "label": "వధువు వయస్సు రుజువు",
+                      "min-uploaded-documents": 1,
+                      "max-uploaded-documents": 1,
+                      "description": "దయచేసి వధువు వయస్సు రుజువు (ఆధార్ కార్డ్) అప్‌లోడ్ చేయండి (PDF ఫార్మాట్ మాత్రమే)",
+                      "max-file-size-kb": 1004,
+                      "allowed-mime-types": [
+                        "application/pdf"
+                      ]
+                    },
+                    {
+                      "type": "EmbeddedLink",
+                      "text": "అప్‌లోడ్ చేయండి",
+                      "on-click-action": {
+                        "name": "data_exchange",
+                        "payload": {
+                          "brideAgeProof": "${form.brideAgeProof}",
+                          "current_selected": "brideAgeProof"
+                        }
+                      }
+                    }
+                  ],
+                  "brideGroomAgeProof": [
+                    {
+                      "type": "DocumentPicker",
+                      "name": "brideGroomAgeProof",
+                      "label": "వధువు వరుడు వయస్సు రుజువు",
+                      "min-uploaded-documents": 1,
+                      "max-uploaded-documents": 1,
+                      "description": "దయచేసి వరుడి వయస్సు రుజువును అప్‌లోడ్ చేయండి (ఆధార్ కార్డ్).(PDF ఫార్మాట్ మాత్రమే)",
+                      "max-file-size-kb": 1004,
+                      "allowed-mime-types": [
+                        "application/pdf"
+                      ]
+                    },
+                    {
+                      "type": "EmbeddedLink",
+                      "text": "అప్‌లోడ్ చేయండి",
+                      "on-click-action": {
+                        "name": "data_exchange",
+                        "payload": {
+                          "brideGroomAgeProof": "${form.brideGroomAgeProof}",
+                          "current_selected": "brideGroomAgeProof"
+                        }
+                      }
+                    }
+                  ],
+                  "residenceProof": [
+                    {
+                      "type": "DocumentPicker",
+                      "name": "residenceProof",
+                      "label": "నివాస రుజువు",
+                      "min-uploaded-documents": 1,
+                      "max-uploaded-documents": 1,
+                      "description": "దయచేసి నివాస ధృవీకరణ పత్రాన్ని అప్‌లోడ్ చేయండి (బియ్యం కార్డ్/టెలిఫోన్ బిల్లు/విద్యుత్ బిల్లు/ఆధార్ కార్డ్/ఓటర్ ID/పాస్‌పోర్ట్/డ్రైవింగ్ లైసెన్స్/MGNREGS జాబ్ కార్డ్).(PDF ఫార్మాట్ మాత్రమే)",
+                      "max-file-size-kb": 1004,
+                      "allowed-mime-types": [
+                        "application/pdf"
+                      ]
+                    },
+                    {
+                      "type": "EmbeddedLink",
+                      "text": "అప్‌లోడ్ చేయండి",
+                      "on-click-action": {
+                        "name": "data_exchange",
+                        "payload": {
+                          "residenceProof": "${form.residenceProof}",
+                          "current_selected": "residenceProof"
+                        }
+                      }
+                    }
+                  ],
+                  "default": [
+                    {
+                      "type": "TextHeading",
+                      "text": "Invalid Document Upload"
+                    }
+                  ]
+                }
+              },
+              {
+                "on-click-action": {
+                  "name": "complete",
+                  "payload": {
+                    "brideGroomAadhaarNumber": "${data.brideGroomAadhaarNumber}",
+                    "brideGroomSelectedWitness": "${data.brideGroomSelectedWitness}",
+                    "groomOtp": "${data.groomOtp}",
+                    "groomWitnessAadhaarNumber": "${data.groomWitnessAadhaarNumber}",
+                    "groomWitnessName": "${data.groomWitnessName}",
+                    "groomWitnessMiddleName": "${data.groomWitnessMiddleName}",
+                    "groomWitnessAddress": "${data.groomWitnessAddress}",
+                    "groomWitnessAge": "${data.groomWitnessAge}",
+                    "groomWitnessOccupation": "${data.groomWitnessOccupation}",
+                    "groomWitnessRelation": "${data.groomWitnessRelation}",
+                    "groomWitnessPhoto": "${data.groomWitnessPhoto}",
+                    "brideAadhaarNumber": "${data.brideAadhaarNumber}",
+                    "selectedWitness": "${data.selectedWitness}",
+                    "brideOtp": "${data.brideOtp}",
+                    "witnessAadhaarNumber": "${data.witnessAadhaarNumber}",
+                    "witnessName": "${data.witnessName}",
+                    "witnessMiddleName": "${data.witnessMiddleName}",
+                    "witnessAddress": "${data.witnessAddress}",
+                    "witnessAge": "${data.witnessAge}",
+                    "witnessOccupation": "${data.witnessOccupation}",
+                    "witnessRelation": "${data.witnessRelation}",
+                    "witnessPhoto": "${data.witnessPhoto}",
+                    "marriageDate": "${data.marriageDate}",
+                    "venueOfMarriage": "${data.venueOfMarriage}",
+                    "marriageDistrict": "${data.marriageDistrict}",
+                    "marriageMandal": "${data.marriageMandal}",
+                    "marriageVillage": "${data.marriageVillage}",
+                    "marriagePanchayat": "${data.marriagePanchayat}",
+                    "whatsAppNumber": "${data.whatsAppNumber}",
+                    "postalOffice": "${data.postalOffice}",
+                    "postalVillage": "${data.postalVillage}",
+                    "isSameAsPermanentAddress": "${data.isSameAsPermanentAddress}",
+                    "presentDoorNoAndStrretName": "${data.presentDoorNoAndStrretName}",
+                    "district": "${data.district}",
+                    "presentMandalAndMunicipality": "${data.presentMandalAndMunicipality}",
+                    "presentVillageOrWardOrSecretariat": "${data.presentVillageOrWardOrSecretariat}",
+                    "pinCode": "${data.pinCode}",
+                    "presentPostalOffice": "${data.presentPostalOffice}",
+                    "presentPostalVillage": "${data.presentPostalVillage}",
+                    "extraDetails": "${data.extraDetails}",
+                    "marriagePhoto": "${form.marriagePhoto}",
+                    "marriageCard": "${form.marriageCard}",
+                    "brideAgeProof": "${form.brideAgeProof}",
+                    "brideGroomAgeProof": "${form.brideGroomAgeProof}",
+                    "residenceProof": "${form.residenceProof}"
+                  }
+                },
+                "label": "పూర్తి",
+                "enabled": "${data.isFooterEnabled}",
                 "type": "Footer"
               }
             ],
