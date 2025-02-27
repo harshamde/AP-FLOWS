@@ -5,21 +5,26 @@
 			"APPLICATION_FORM",
 			"INCOME_DETAILS",
 			"APPLICANT_TERMS",
-			"AUTHORITY_TERMS"
+			"AUTHORITY_TERMS",
+			"UPLOAD_DOCUMENTS"
 		],
 		"APPLICATION_FORM": [
 			"INCOME_DETAILS",
 			"APPLICANT_TERMS",
-			"AUTHORITY_TERMS"
+			"AUTHORITY_TERMS",
+			"UPLOAD_DOCUMENTS"
 		],
 		"INCOME_DETAILS": [
 			"APPLICANT_TERMS",
-			"AUTHORITY_TERMS"
+			"AUTHORITY_TERMS",
+			"UPLOAD_DOCUMENTS"
 		],
-		"APPLICANT_TERMS": [
+		"APPLICANT_TERMS": [],
+		"AUTHORITY_TERMS": [],
+		"UPLOAD_DOCUMENTS": [
+			"APPLICANT_TERMS",
 			"AUTHORITY_TERMS"
-		],
-		"AUTHORITY_TERMS": []
+		]
 	},
 	"data_api_version": "3.0",
 	"screens": [
@@ -1076,8 +1081,6 @@
 										"extent": "${form.extent}",
 										"PpbTD": "${form.PpbTD}",
 										"income": "${form.income}",
-										"firstOtpIn": "${form.firstOtpIn}",
-										"secondOtpIn": "${form.secondOtpIn}",
 										"onSelectAction": "on-delete-row-embedded-selected",
 										"onSelectActionCheckbox": "pattadar-checkbox-selected"
 									}
@@ -1112,8 +1115,6 @@
 										"extent": "${form.extent}",
 										"PpbTD": "${form.PpbTD}",
 										"income": "${form.income}",
-										"firstOtpIn": "${form.firstOtpIn}",
-										"secondOtpIn": "${form.secondOtpIn}",
 										"onSelectAction": "on-delete-row-embedded-selected"
 									}
 								},
@@ -1191,8 +1192,6 @@
 										"extent": "${form.extent}",
 										"PpbTD": "${form.PpbTD}",
 										"income": "${form.income}",
-										"firstOtpIn": "${form.firstOtpIn}",
-										"secondOtpIn": "${form.secondOtpIn}",
 										"onSelectAction": "on-confirm-embedded-selected"
 									}
 								},
@@ -1207,11 +1206,7 @@
 							},
 							{
 								"on-click-action": {
-									"name": "navigate",
-									"next": {
-										"type": "screen",
-										"name": "APPLICANT_TERMS"
-									},
+									"name": "data_exchange",
 									"payload": {
 										"rationCardNumber": "${data.rationCardNumber}",
 										"remarks": "${data.remarks}",
@@ -1236,92 +1231,10 @@
 										"surveyNumber": "${form.surveyNumber}",
 										"extent": "${form.extent}",
 										"PpbTD": "${form.PpbTD}",
-										"income": "${form.income}",
-										"firstOtpIn": "${form.firstOtpIn}",
-										"secondOtpIn": "${form.secondOtpIn}"
+										"income": "${form.income}"
 									}
 								},
-								"label": "నేను (దరఖాస్తుదారు), సమాచారం/పత్రాలు సమర్పించినట్లు అంగీకరిస్తున్నాను.",
-								"name": "firstOtpIn",
-								"visible": "${data.isOptInVisible}",
-								"required": "${data.isOptInVisible}",
-								"type": "OptIn"
-							},
-							{
-								"on-click-action": {
-									"name": "navigate",
-									"next": {
-										"type": "screen",
-										"name": "AUTHORITY_TERMS"
-									},
-									"payload": {
-										"rationCardNumber": "${data.rationCardNumber}",
-										"remarks": "${data.remarks}",
-										"incomeCertificate": "${data.incomeCertificate}",
-										"applicationDistrict": "${data.applicationDistrict}",
-										"applicationMandal": "${data.applicationMandal}",
-										"applicationVillage": "${data.applicationVillage}",
-										"whatsAppNumber": "${data.whatsAppNumber}",
-										"postalOffice": "${data.postalOffice}",
-										"postalVillage": "${data.postalVillage}",
-										"isSameAsPermanentAddress": "${data.isSameAsPermanentAddress}",
-										"presentDoorNoAndStrretName": "${data.presentDoorNoAndStrretName}",
-										"district": "${data.district}",
-										"presentMandalAndMunicipality": "${data.presentMandalAndMunicipality}",
-										"presentVillageOrWardOrSecretariat": "${data.presentVillageOrWardOrSecretariat}",
-										"pinCode": "${data.pinCode}",
-										"presentPostalOffice": "${data.presentPostalOffice}",
-										"presentPostalVillage": "${data.presentPostalVillage}",
-										"extraDetails": "${data.extraDetails}",
-										"pattadarCheckbox": "${form.pattadarCheckbox}",
-										"pattadarName": "${form.pattadarName}",
-										"surveyNumber": "${form.surveyNumber}",
-										"extent": "${form.extent}",
-										"PpbTD": "${form.PpbTD}",
-										"income": "${form.income}",
-										"firstOtpIn": "${form.firstOtpIn}",
-										"secondOtpIn": "${form.secondOtpIn}"
-									}
-								},
-								"label": "నేను (అథారిటీని ధృవీకరించండి), పైన ఇచ్చిన వివరాలు సరైనవని మరియు పూర్తి అని దీని ద్వారా ప్రకటిస్తున్నాను.",
-								"name": "secondOtpIn",
-								"visible": "${data.isOptInVisible}",
-								"required": "${data.isOptInVisible}",
-								"type": "OptIn"
-							},
-							{
-								"on-click-action": {
-									"name": "complete",
-									"payload": {
-										"rationCardNumber": "${data.rationCardNumber}",
-										"remarks": "${data.remarks}",
-										"incomeCertificate": "${data.incomeCertificate}",
-										"applicationDistrict": "${data.applicationDistrict}",
-										"applicationMandal": "${data.applicationMandal}",
-										"applicationVillage": "${data.applicationVillage}",
-										"whatsAppNumber": "${data.whatsAppNumber}",
-										"postalOffice": "${data.postalOffice}",
-										"postalVillage": "${data.postalVillage}",
-										"isSameAsPermanentAddress": "${data.isSameAsPermanentAddress}",
-										"presentDoorNoAndStrretName": "${data.presentDoorNoAndStrretName}",
-										"district": "${data.district}",
-										"presentMandalAndMunicipality": "${data.presentMandalAndMunicipality}",
-										"presentVillageOrWardOrSecretariat": "${data.presentVillageOrWardOrSecretariat}",
-										"pinCode": "${data.pinCode}",
-										"presentPostalOffice": "${data.presentPostalOffice}",
-										"presentPostalVillage": "${data.presentPostalVillage}",
-										"extraDetails": "${data.extraDetails}",
-										"pattadarCheckbox": "${form.pattadarCheckbox}",
-										"pattadarName": "${form.pattadarName}",
-										"surveyNumber": "${form.surveyNumber}",
-										"extent": "${form.extent}",
-										"PpbTD": "${form.PpbTD}",
-										"income": "${form.income}",
-										"firstOtpIn": "${form.firstOtpIn}",
-										"secondOtpIn": "${form.secondOtpIn}"
-									}
-								},
-								"label": "చెల్లింపు",
+								"label": "కొనసాగించు",
 								"enabled": "${data.isFooterEnable}",
 								"type": "Footer"
 							}
@@ -1341,118 +1254,7 @@
 			"terminal": true
 		},
 		{
-			"data": {
-				"pattadarCheckbox": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					},
-					"__example__": []
-				},
-				"pattadarName": {
-					"type": "string",
-					"__example__": ""
-				},
-				"surveyNumber": {
-					"type": "string",
-					"__example__": ""
-				},
-				"extent": {
-					"type": "string",
-					"__example__": ""
-				},
-				"PpbTD": {
-					"type": "string",
-					"__example__": ""
-				},
-				"income": {
-					"type": "string",
-					"__example__": ""
-				},
-				"firstOtpIn": {
-					"type": "boolean",
-					"__example__": false
-				},
-				"secondOtpIn": {
-					"type": "boolean",
-					"__example__": false
-				},
-				"rationCardNumber": {
-					"type": "string",
-					"__example__": ""
-				},
-				"remarks": {
-					"type": "string",
-					"__example__": ""
-				},
-				"incomeCertificate": {
-					"type": "string",
-					"__example__": ""
-				},
-				"applicationDistrict": {
-					"type": "string",
-					"__example__": ""
-				},
-				"applicationMandal": {
-					"type": "string",
-					"__example__": ""
-				},
-				"applicationVillage": {
-					"type": "string",
-					"__example__": ""
-				},
-				"whatsAppNumber": {
-					"type": "string",
-					"__example__": ""
-				},
-				"postalOffice": {
-					"type": "string",
-					"__example__": ""
-				},
-				"postalVillage": {
-					"type": "string",
-					"__example__": ""
-				},
-				"isSameAsPermanentAddress": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					},
-					"__example__": []
-				},
-				"presentDoorNoAndStrretName": {
-					"type": "string",
-					"__example__": ""
-				},
-				"district": {
-					"type": "string",
-					"__example__": ""
-				},
-				"presentMandalAndMunicipality": {
-					"type": "string",
-					"__example__": ""
-				},
-				"presentVillageOrWardOrSecretariat": {
-					"type": "string",
-					"__example__": ""
-				},
-				"pinCode": {
-					"type": "string",
-					"__example__": ""
-				},
-				"presentPostalOffice": {
-					"type": "string",
-					"__example__": ""
-				},
-				"presentPostalVillage": {
-					"type": "string",
-					"__example__": ""
-				},
-				"extraDetails": {
-					"type": "string",
-					"__example__": ""
-				}
-			},
+			"data": {},
 			"id": "APPLICANT_TERMS",
 			"title": "దరఖాస్తుదారు నిబంధనలు",
 			"layout": {
@@ -1481,6 +1283,35 @@
 			}
 		},
 		{
+			"data": {},
+			"id": "AUTHORITY_TERMS",
+			"title": "అధికార నిబంధనలు",
+			"layout": {
+				"type": "SingleColumnLayout",
+				"children": [
+					{
+						"type": "Form",
+						"name": "form",
+						"children": [
+							{
+								"text": "నేను (అథారిటీని ధృవీకరించండి), పైన ఇచ్చిన వివరాలు సరైనవని మరియు పూర్తి అని దీని ద్వారా ప్రకటిస్తున్నాను. వాస్తవాలను తప్పుగా సూచించినట్లయితే నేను బాధ్యత వహిస్తాను మరియు శిక్షార్హమైన చర్యకు బాధ్యత వహిస్తాను.",
+								"type": "TextBody"
+							}
+						],
+						"init-values": {
+							"whatsAppNumber": "${data.initWhatsAppNumber}",
+							"presentDoorNoAndStrretName": "${data.initDoorAndStreetNam}",
+							"pattadarName": "${data.initIncomeDetails}",
+							"surveyNumber": "${data.initIncomeDetails}",
+							"extent": "${data.initIncomeDetails}",
+							"PpbTD": "${data.initIncomeDetails}",
+							"income": "${data.initIncomeDetails}"
+						}
+					}
+				]
+			}
+		},
+		{
 			"data": {
 				"pattadarCheckbox": {
 					"type": "array",
@@ -1508,14 +1339,6 @@
 				"income": {
 					"type": "string",
 					"__example__": ""
-				},
-				"firstOtpIn": {
-					"type": "boolean",
-					"__example__": false
-				},
-				"secondOtpIn": {
-					"type": "boolean",
-					"__example__": false
 				},
 				"rationCardNumber": {
 					"type": "string",
@@ -1591,10 +1414,30 @@
 				"extraDetails": {
 					"type": "string",
 					"__example__": ""
+				},
+				"uploadDocumentBodyText": {
+					"type": "string",
+					"__example__": "Upload Document"
+				},
+				"isFooterEnable": {
+					"type": "boolean",
+					"__example__": true
+				},
+				"isOptInVisible": {
+					"type": "boolean",
+					"__example__": true
+				},
+				"isFooterEnabled": {
+					"type": "boolean",
+					"__example__": true
+				},
+				"currentUpload": {
+					"type": "string",
+					"__example__": "applicationForm"
 				}
 			},
-			"id": "AUTHORITY_TERMS",
-			"title": "అధికార నిబంధనలు",
+			"id": "UPLOAD_DOCUMENTS",
+			"title": "పత్రాలను అప్‌లోడ్ చేయండి",
 			"layout": {
 				"type": "SingleColumnLayout",
 				"children": [
@@ -1603,8 +1446,138 @@
 						"name": "form",
 						"children": [
 							{
-								"text": "నేను (అథారిటీని ధృవీకరించండి), పైన ఇచ్చిన వివరాలు సరైనవని మరియు పూర్తి అని దీని ద్వారా ప్రకటిస్తున్నాను. వాస్తవాలను తప్పుగా సూచించినట్లయితే నేను బాధ్యత వహిస్తాను మరియు శిక్షార్హమైన చర్యకు బాధ్యత వహిస్తాను.",
+								"text": "${data.uploadDocumentBodyText}",
 								"type": "TextBody"
+							},
+							{
+								"type": "Switch",
+								"value": "${data.currentUpload}",
+								"cases": {
+									"applicationForm": [
+										{
+											"type": "DocumentPicker",
+											"name": "applicationForm",
+											"label": "దరఖాస్తు ఫారం",
+											"min-uploaded-documents": 1,
+											"max-uploaded-documents": 1,
+											"description": "దయచేసి దరఖాస్తు ఫారమ్‌ను అప్‌లోడ్ చేయండి. గమనిక: PDF ఆకృతిలో మాత్రమే మరియు పరిమాణం 1MB కంటే తక్కువగా ఉండాలి.",
+											"max-file-size-kb": 10024,
+											"allowed-mime-types": [
+												"application/pdf"
+											]
+										},
+										{
+											"type": "EmbeddedLink",
+											"text": "అప్‌లోడ్ చేయండి",
+											"on-click-action": {
+												"name": "data_exchange",
+												"payload": {
+													"applicationForm": "${form.applicationForm}",
+													"current_selected": "applicationForm"
+												}
+											}
+										}
+									],
+									"rationCard": [
+										{
+											"type": "DocumentPicker",
+											"name": "rationCard",
+											"label": "రేషన్ కార్డ్ / EPIC కార్డ్ / ఆధార్",
+											"min-uploaded-documents": 1,
+											"max-uploaded-documents": 1,
+											"description": "దయచేసి రేషన్ కార్డ్ / EPIC కార్డ్ / ఆధార్ కార్డ్‌ని అప్‌లోడ్ చేయండి గమనిక: PDF ఫార్మాట్‌లో మాత్రమే మరియు పరిమాణం 1MB కంటే తక్కువగా ఉండాలి.",
+											"max-file-size-kb": 10024,
+											"allowed-mime-types": [
+												"application/pdf"
+											]
+										},
+										{
+											"type": "EmbeddedLink",
+											"text": "అప్‌లోడ్ చేయండి",
+											"on-click-action": {
+												"name": "data_exchange",
+												"payload": {
+													"rationCard": "${form.rationCard}",
+													"current_selected": "rationCard"
+												}
+											}
+										}
+									],
+									"default": [
+										{
+											"type": "TextHeading",
+											"text": "Invalid Document Upload"
+										}
+									]
+								}
+							},
+							{
+								"on-click-action": {
+									"name": "navigate",
+									"next": {
+										"type": "screen",
+										"name": "APPLICANT_TERMS"
+									},
+									"payload": {}
+								},
+								"label": "నేను (దరఖాస్తుదారు), సమాచారం/పత్రాలు సమర్పించినట్లు అంగీకరిస్తున్నాను...",
+								"name": "firstOtpIn",
+								"visible": "${data.isOptInVisible}",
+								"required": "${data.isOptInVisible}",
+								"type": "OptIn"
+							},
+							{
+								"on-click-action": {
+									"name": "navigate",
+									"next": {
+										"type": "screen",
+										"name": "AUTHORITY_TERMS"
+									},
+									"payload": {}
+								},
+								"label": "నేను (అథారిటీని ధృవీకరించండి), పైన ఇచ్చిన వివరాలు సరైనవని మరియు పూర్తి అని దీని ద్వారా ప్రకటిస్తున్నాను...",
+								"name": "secondOtpIn",
+								"visible": "${data.isOptInVisible}",
+								"required": "${data.isOptInVisible}",
+								"type": "OptIn"
+							},
+							{
+								"on-click-action": {
+									"name": "complete",
+									"payload": {
+										"pattadarCheckbox": "${data.pattadarCheckbox}",
+										"pattadarName": "${data.pattadarName}",
+										"surveyNumber": "${data.surveyNumber}",
+										"extent": "${data.extent}",
+										"PpbTD": "${data.PpbTD}",
+										"income": "${data.income}",
+										"firstOtpIn": "${form.firstOtpIn}",
+										"secondOtpIn": "${form.secondOtpIn}",
+										"rationCardNumber": "${data.rationCardNumber}",
+										"remarks": "${data.remarks}",
+										"incomeCertificate": "${data.incomeCertificate}",
+										"applicationDistrict": "${data.applicationDistrict}",
+										"applicationMandal": "${data.applicationMandal}",
+										"applicationVillage": "${data.applicationVillage}",
+										"whatsAppNumber": "${data.whatsAppNumber}",
+										"postalOffice": "${data.postalOffice}",
+										"postalVillage": "${data.postalVillage}",
+										"isSameAsPermanentAddress": "${data.isSameAsPermanentAddress}",
+										"presentDoorNoAndStrretName": "${data.presentDoorNoAndStrretName}",
+										"district": "${data.district}",
+										"presentMandalAndMunicipality": "${data.presentMandalAndMunicipality}",
+										"presentVillageOrWardOrSecretariat": "${data.presentVillageOrWardOrSecretariat}",
+										"pinCode": "${data.pinCode}",
+										"presentPostalOffice": "${data.presentPostalOffice}",
+										"presentPostalVillage": "${data.presentPostalVillage}",
+										"extraDetails": "${data.extraDetails}",
+										"applicationForm": "${form.applicationForm}",
+										"rationCard": "${form.rationCard}"
+									}
+								},
+								"label": "సమర్పించండి",
+								"enabled": "${data.isFooterEnabled}",
+								"type": "Footer"
 							}
 						],
 						"init-values": {
@@ -1618,7 +1591,8 @@
 						}
 					}
 				]
-			}
+			},
+			"terminal": true
 		}
 	]
 }
