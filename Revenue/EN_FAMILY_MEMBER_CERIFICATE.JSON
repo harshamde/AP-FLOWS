@@ -4,16 +4,22 @@
         "BASIC_DETAILS": [
             "APPLICATION_FORM",
             "INCOME_DETAILS",
-            "DECLARATION"
+            "DECLARATION",
+            "DOCUMENT_UPLOAD"
         ],
         "APPLICATION_FORM": [
             "INCOME_DETAILS",
-            "DECLARATION"
+            "DECLARATION",
+            "DOCUMENT_UPLOAD"
         ],
         "INCOME_DETAILS": [
-            "DECLARATION"
+            "DECLARATION",
+            "DOCUMENT_UPLOAD"
         ],
-        "DECLARATION": []
+        "DECLARATION": [],
+        "DOCUMENT_UPLOAD": [
+            "DECLARATION"
+        ]
     },
     "data_api_version": "3.0",
     "screens": [
@@ -1230,8 +1236,6 @@
                                         "maritalStatus": "${form.maritalStatus}",
                                         "identityProof": "${form.identityProof}",
                                         "identityNumber": "${form.identityNumber}",
-                                        "firstOptInOutput": "${form.firstOptInOutput}",
-                                        "secoindOptInOutput": "${form.secoindOptInOutput}",
                                         "onSelectAction": "family-member-selected"
                                     }
                                 },
@@ -1274,8 +1278,6 @@
                                         "maritalStatus": "${form.maritalStatus}",
                                         "identityProof": "${form.identityProof}",
                                         "identityNumber": "${form.identityNumber}",
-                                        "firstOptInOutput": "${form.firstOptInOutput}",
-                                        "secoindOptInOutput": "${form.secoindOptInOutput}",
                                         "onSelectAction": "delete-details-clicked"
                                     }
                                 },
@@ -1409,8 +1411,6 @@
                                         "maritalStatus": "${form.maritalStatus}",
                                         "identityProof": "${form.identityProof}",
                                         "identityNumber": "${form.identityNumber}",
-                                        "firstOptInOutput": "${form.firstOptInOutput}",
-                                        "secoindOptInOutput": "${form.secoindOptInOutput}",
                                         "onSelectAction": "add-details-clicked"
                                     }
                                 },
@@ -1454,105 +1454,10 @@
                                         "maritalStatus": "${form.maritalStatus}",
                                         "identityProof": "${form.identityProof}",
                                         "identityNumber": "${form.identityNumber}",
-                                        "firstOptInOutput": "${form.firstOptInOutput}",
-                                        "secoindOptInOutput": "${form.secoindOptInOutput}",
-                                        "onSelectAction": "firstOptIn"
+                                        "onSelectAction": "on-footer-click"
                                     }
                                 },
-                                "name": "firstOptInOutput",
-                                "required": true,
-                                "visible": "${data.isOptInVisible}",
-                                "label": "I (Applicant), agree that the information/documents submitted is with...",
-                                "type": "OptIn"
-                            },
-                            {
-                                "on-click-action": {
-                                    "name": "data_exchange",
-                                    "payload": {
-                                        "rationCardNumber": "${data.rationCardNumber}",
-                                        "remarks": "${data.remarks}",
-                                        "revenueVillageWard": "${data.revenueVillageWard}",
-                                        "isDeceasedFirstName": "${data.isDeceasedFirstName}",
-                                        "deacesedMiddleName": "${data.deacesedMiddleName}",
-                                        "deceasedLastName": "${data.deceasedLastName}",
-                                        "fatherOrHusbandName": "${data.fatherOrHusbandName}",
-                                        "dateOfDeath": "${data.dateOfDeath}",
-                                        "reasonOfDeath": "${data.reasonOfDeath}",
-                                        "occupation": "${data.occupation}",
-                                        "adhaarEnrolmentNumber": "${data.adhaarEnrolmentNumber}",
-                                        "deathHappendPlace": "${data.deathHappendPlace}",
-                                        "whatsAppNumber": "${data.whatsAppNumber}",
-                                        "postalOffice": "${data.postalOffice}",
-                                        "postalVillage": "${data.postalVillage}",
-                                        "isSameAsPermanentAddress": "${data.isSameAsPermanentAddress}",
-                                        "presentDoorNoAndStrretName": "${data.presentDoorNoAndStrretName}",
-                                        "district": "${data.district}",
-                                        "presentMandalAndMunicipality": "${data.presentMandalAndMunicipality}",
-                                        "presentVillageOrWardOrSecretariat": "${data.presentVillageOrWardOrSecretariat}",
-                                        "pinCode": "${data.pinCode}",
-                                        "presentPostalOffice": "${data.presentPostalOffice}",
-                                        "presentPostalVillage": "${data.presentPostalVillage}",
-                                        "extraDetails": "${data.extraDetails}",
-                                        "selectedFamilyMember": "${form.selectedFamilyMember}",
-                                        "nameOfFamilyMember": "${form.nameOfFamilyMember}",
-                                        "gender": "${form.gender}",
-                                        "age": "${form.age}",
-                                        "relationshipWithDeceased": "${form.relationshipWithDeceased}",
-                                        "maritalStatus": "${form.maritalStatus}",
-                                        "identityProof": "${form.identityProof}",
-                                        "identityNumber": "${form.identityNumber}",
-                                        "firstOptInOutput": "${form.firstOptInOutput}",
-                                        "secoindOptInOutput": "${form.secoindOptInOutput}",
-                                        "onSelectAction": "secondOptIn"
-                                    }
-                                },
-                                "label": "I (Verify Authority), hereby, declare that the particulars given above are correct and...",
-                                "name": "secoindOptInOutput",
-                                "required": true,
-                                "visible": "${data.isOptInVisible}",
-                                "type": "OptIn"
-                            },
-                            {
-                                "on-click-action": {
-                                    "name": "complete",
-                                    "payload": {
-                                        "rationCardNumber": "${data.rationCardNumber}",
-                                        "remarks": "${data.remarks}",
-                                        "revenueVillageWard": "${data.revenueVillageWard}",
-                                        "isDeceasedFirstName": "${data.isDeceasedFirstName}",
-                                        "deacesedMiddleName": "${data.deacesedMiddleName}",
-                                        "deceasedLastName": "${data.deceasedLastName}",
-                                        "fatherOrHusbandName": "${data.fatherOrHusbandName}",
-                                        "dateOfDeath": "${data.dateOfDeath}",
-                                        "reasonOfDeath": "${data.reasonOfDeath}",
-                                        "occupation": "${data.occupation}",
-                                        "adhaarEnrolmentNumber": "${data.adhaarEnrolmentNumber}",
-                                        "deathHappendPlace": "${data.deathHappendPlace}",
-                                        "whatsAppNumber": "${data.whatsAppNumber}",
-                                        "postalOffice": "${data.postalOffice}",
-                                        "postalVillage": "${data.postalVillage}",
-                                        "isSameAsPermanentAddress": "${data.isSameAsPermanentAddress}",
-                                        "presentDoorNoAndStrretName": "${data.presentDoorNoAndStrretName}",
-                                        "district": "${data.district}",
-                                        "presentMandalAndMunicipality": "${data.presentMandalAndMunicipality}",
-                                        "presentVillageOrWardOrSecretariat": "${data.presentVillageOrWardOrSecretariat}",
-                                        "pinCode": "${data.pinCode}",
-                                        "presentPostalOffice": "${data.presentPostalOffice}",
-                                        "presentPostalVillage": "${data.presentPostalVillage}",
-                                        "extraDetails": "${data.extraDetails}",
-                                        "selectedFamilyMember": "${form.selectedFamilyMember}",
-                                        "nameOfFamilyMember": "${form.nameOfFamilyMember}",
-                                        "gender": "${form.gender}",
-                                        "age": "${form.age}",
-                                        "relationshipWithDeceased": "${form.relationshipWithDeceased}",
-                                        "maritalStatus": "${form.maritalStatus}",
-                                        "identityProof": "${form.identityProof}",
-                                        "identityNumber": "${form.identityNumber}",
-                                        "firstOptInOutput": "${form.firstOptInOutput}",
-                                        "secoindOptInOutput": "${form.secoindOptInOutput}"
-                                    }
-                                },
-                                "label": "Submit",
+                                "label": "Next",
                                 "enabled": "${data.isSubmitEnabled}",
                                 "type": "Footer"
                             }
@@ -1570,8 +1475,43 @@
                         }
                     }
                 ]
+            }
+        },
+        {
+            "data": {
+                "declarationContent": {
+                    "type": "string",
+                    "__example__": "I (Applicant), agree that the information/documents submitted is with my consent and can be verified. * make this message short \\n I (Applicant), agree that the information/documents submitted is with my consent and can be verified. * make this message short"
+                }
             },
-            "terminal": true
+            "id": "DECLARATION",
+            "title": "Declaration",
+            "layout": {
+                "type": "SingleColumnLayout",
+                "children": [
+                    {
+                        "type": "Form",
+                        "name": "form",
+                        "children": [
+                            {
+                                "text": "${data.declarationContent}",
+                                "type": "TextBody"
+                            }
+                        ],
+                        "init-values": {
+                            "whatsAppNumber": "${data.initWhatsAppNumber}",
+                            "presentDoorNoAndStrretName": "${data.initDoorAndStreetNam}",
+                            "nameOfFamilyMember": "${data.familyMemberNameInitValue}",
+                            "gender": "${data.genderInitValue}",
+                            "age": "${data.ageInitValue}",
+                            "relationshipWithDeceased": "${data.relationWithDeceasedInitValue}",
+                            "maritalStatus": "${data.maritalStatusInitValue}",
+                            "identityProof": "${data.identityProofInitValue}",
+                            "identityNumber": "${data.identityNumberInitValue}"
+                        }
+                    }
+                ]
+            }
         },
         {
             "data": {
@@ -1717,13 +1657,25 @@
                     "type": "string",
                     "__example__": ""
                 },
-                "declarationContent": {
+                "documentUploadTextBody": {
                     "type": "string",
-                    "__example__": "I (Applicant), agree that the information/documents submitted is with my consent and can be verified. * make this message short \\n I (Applicant), agree that the information/documents submitted is with my consent and can be verified. * make this message short"
+                    "__example__": "documentUploadTextBody"
+                },
+                "isFooterEnabled": {
+                    "type": "boolean",
+                    "__example__": false
+                },
+                "isOptInVisible": {
+                    "type": "boolean",
+                    "__example__": false
+                },
+                "currentUpload": {
+                    "type": "string",
+                    "__example__": "applicationForm"
                 }
             },
-            "id": "DECLARATION",
-            "title": "Declaration",
+            "id": "DOCUMENT_UPLOAD",
+            "title": "Document Upload",
             "layout": {
                 "type": "SingleColumnLayout",
                 "children": [
@@ -1732,8 +1684,202 @@
                         "name": "form",
                         "children": [
                             {
-                                "text": "${data.declarationContent}",
+                                "text": "${data.documentUploadTextBody}",
                                 "type": "TextBody"
+                            },
+                            {
+                                "type": "Switch",
+                                "value": "${data.currentUpload}",
+                                "cases": {
+                                    "applicationForm": [
+                                        {
+                                            "type": "DocumentPicker",
+                                            "name": "applicationForm",
+                                            "label": "Application Form",
+                                            "min-uploaded-documents": 1,
+                                            "max-uploaded-documents": 1,
+                                            "description": "Please upload your application form.  (Note: Only in PDF format, maximum size 1MB.)",
+                                            "max-file-size-kb": 1000,
+                                            "allowed-mime-types": [
+                                                "application/pdf"
+                                            ]
+                                        },
+                                        {
+                                            "type": "EmbeddedLink",
+                                            "text": "Upload",
+                                            "on-click-action": {
+                                                "name": "data_exchange",
+                                                "payload": {
+                                                    "applicationForm": "${form.applicationForm}",
+                                                    "current_selected": "applicationForm"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "affidavit": [
+                                        {
+                                            "type": "DocumentPicker",
+                                            "name": "affidavit",
+                                            "label": "Notarized Affidavit",
+                                            "min-uploaded-documents": 1,
+                                            "max-uploaded-documents": 1,
+                                            "description": "Please upload a notarized affidavit with Name, Age and Relationship with the deceased. (Note: Only in PDF format, maximum size 1MB.)",
+                                            "max-file-size-kb": 1000,
+                                            "allowed-mime-types": [
+                                                "application/pdf"
+                                            ]
+                                        },
+                                        {
+                                            "type": "EmbeddedLink",
+                                            "text": "Upload",
+                                            "on-click-action": {
+                                                "name": "data_exchange",
+                                                "payload": {
+                                                    "affidavit": "${form.affidavit}",
+                                                    "current_selected": "affidavit"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "idProof": [
+                                        {
+                                            "type": "DocumentPicker",
+                                            "name": "idProof",
+                                            "label": "ID Proof Document",
+                                            "min-uploaded-documents": 1,
+                                            "max-uploaded-documents": 1,
+                                            "description": "Please upload an ID proof document. (Ration Card, Voter ID, Passport, Passbook, Aadhaar, etc.) Showing the applicant's relationship with the deceased. (Note: Only in PDF format, maximum size 1MB.)",
+                                            "max-file-size-kb": 1000,
+                                            "allowed-mime-types": [
+                                                "application/pdf"
+                                            ]
+                                        },
+                                        {
+                                            "type": "EmbeddedLink",
+                                            "text": "Upload",
+                                            "on-click-action": {
+                                                "name": "data_exchange",
+                                                "payload": {
+                                                    "idProof": "${form.idProof}",
+                                                    "current_selected": "idProof"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "deathCertificateOrFir": [
+                                        {
+                                            "type": "DocumentPicker",
+                                            "name": "deathCertificateOrFir",
+                                            "label": "Death Certificate or FIR",
+                                            "min-uploaded-documents": 1,
+                                            "max-uploaded-documents": 1,
+                                            "description": "Please upload the Death Certificate or FIR. (Note: Only in PDF format, maximum size 1MB.)",
+                                            "max-file-size-kb": 1000,
+                                            "allowed-mime-types": [
+                                                "application/pdf"
+                                            ]
+                                        },
+                                        {
+                                            "type": "EmbeddedLink",
+                                            "text": "Upload",
+                                            "on-click-action": {
+                                                "name": "data_exchange",
+                                                "payload": {
+                                                    "deathCertificateOrFir": "${form.deathCertificateOrFir}",
+                                                    "current_selected": "deathCertificateOrFir"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "default": [
+                                        {
+                                            "type": "TextHeading",
+                                            "text": "Invalid Document Upload"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "on-click-action": {
+                                    "name": "navigate",
+                                    "next": {
+                                        "type": "screen",
+                                        "name": "DECLARATION"
+                                    },
+                                    "payload": {
+                                        "declarationContent": "I (Applicant), agree that the information/documents submitted is with my consent and can be verified."
+                                    }
+                                },
+                                "name": "firstOptInOutput",
+                                "required": true,
+                                "visible": "${data.isOptInVisible}",
+                                "label": "I (Applicant), agree that the information/documents submitted is with...",
+                                "type": "OptIn"
+                            },
+                            {
+                                "on-click-action": {
+                                    "name": "navigate",
+                                    "next": {
+                                        "type": "screen",
+                                        "name": "DECLARATION"
+                                    },
+                                    "payload": {
+                                        "declarationContent": "I (Verify Authority), hereby, declare that the particulars given above are correct and complete. I will be responsible for any misrepresentation of facts and will be liable for punitive action."
+                                    }
+                                },
+                                "label": "I (Verify Authority), hereby, declare that the particulars given above are correct and...",
+                                "name": "secoindOptInOutput",
+                                "required": true,
+                                "visible": "${data.isOptInVisible}",
+                                "type": "OptIn"
+                            },
+                            {
+                                "on-click-action": {
+                                    "name": "complete",
+                                    "payload": {
+                                        "selectedFamilyMember": "${data.selectedFamilyMember}",
+                                        "nameOfFamilyMember": "${data.nameOfFamilyMember}",
+                                        "gender": "${data.gender}",
+                                        "age": "${data.age}",
+                                        "relationshipWithDeceased": "${data.relationshipWithDeceased}",
+                                        "maritalStatus": "${data.maritalStatus}",
+                                        "identityProof": "${data.identityProof}",
+                                        "identityNumber": "${data.identityNumber}",
+                                        "firstOptInOutput": "${data.firstOptInOutput}",
+                                        "secoindOptInOutput": "${data.secoindOptInOutput}",
+                                        "rationCardNumber": "${data.rationCardNumber}",
+                                        "remarks": "${data.remarks}",
+                                        "revenueVillageWard": "${data.revenueVillageWard}",
+                                        "isDeceasedFirstName": "${data.isDeceasedFirstName}",
+                                        "deacesedMiddleName": "${data.deacesedMiddleName}",
+                                        "deceasedLastName": "${data.deceasedLastName}",
+                                        "fatherOrHusbandName": "${data.fatherOrHusbandName}",
+                                        "dateOfDeath": "${data.dateOfDeath}",
+                                        "reasonOfDeath": "${data.reasonOfDeath}",
+                                        "occupation": "${data.occupation}",
+                                        "adhaarEnrolmentNumber": "${data.adhaarEnrolmentNumber}",
+                                        "deathHappendPlace": "${data.deathHappendPlace}",
+                                        "whatsAppNumber": "${data.whatsAppNumber}",
+                                        "postalOffice": "${data.postalOffice}",
+                                        "postalVillage": "${data.postalVillage}",
+                                        "isSameAsPermanentAddress": "${data.isSameAsPermanentAddress}",
+                                        "presentDoorNoAndStrretName": "${data.presentDoorNoAndStrretName}",
+                                        "district": "${data.district}",
+                                        "presentMandalAndMunicipality": "${data.presentMandalAndMunicipality}",
+                                        "presentVillageOrWardOrSecretariat": "${data.presentVillageOrWardOrSecretariat}",
+                                        "pinCode": "${data.pinCode}",
+                                        "presentPostalOffice": "${data.presentPostalOffice}",
+                                        "presentPostalVillage": "${data.presentPostalVillage}",
+                                        "extraDetails": "${data.extraDetails}",
+                                        "applicationForm": "${form.applicationForm}",
+                                        "affidavit": "${form.affidavit}",
+                                        "idProof": "${form.idProof}",
+                                        "deathCertificateOrFir": "${form.deathCertificateOrFir}"
+                                    }
+                                },
+                                "label": "Submit",
+                                "enabled": "${data.isFooterEnabled}",
+                                "type": "Footer"
                             }
                         ],
                         "init-values": {
@@ -1749,7 +1895,8 @@
                         }
                     }
                 ]
-            }
+            },
+            "terminal": true
         }
     ]
 }

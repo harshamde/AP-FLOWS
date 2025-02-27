@@ -4,16 +4,22 @@
     "BASIC_DETAILS": [
       "APPLICATION_FORM",
       "INCOME_DETAILS",
-      "DECLARATION"
+      "DECLARATION",
+      "DOCUMENT_UPLOAD"
     ],
     "APPLICATION_FORM": [
       "INCOME_DETAILS",
-      "DECLARATION"
+      "DECLARATION",
+      "DOCUMENT_UPLOAD"
     ],
     "INCOME_DETAILS": [
-      "DECLARATION"
+      "DECLARATION",
+      "DOCUMENT_UPLOAD"
     ],
-    "DECLARATION": []
+    "DECLARATION": [],
+    "DOCUMENT_UPLOAD": [
+      "DECLARATION"
+    ]
   },
   "data_api_version": "3.0",
   "screens": [
@@ -1230,8 +1236,6 @@
                     "maritalStatus": "${form.maritalStatus}",
                     "identityProof": "${form.identityProof}",
                     "identityNumber": "${form.identityNumber}",
-                    "firstOptInOutput": "${form.firstOptInOutput}",
-                    "secoindOptInOutput": "${form.secoindOptInOutput}",
                     "onSelectAction": "family-member-selected"
                   }
                 },
@@ -1274,8 +1278,6 @@
                     "maritalStatus": "${form.maritalStatus}",
                     "identityProof": "${form.identityProof}",
                     "identityNumber": "${form.identityNumber}",
-                    "firstOptInOutput": "${form.firstOptInOutput}",
-                    "secoindOptInOutput": "${form.secoindOptInOutput}",
                     "onSelectAction": "delete-details-clicked"
                   }
                 },
@@ -1409,8 +1411,6 @@
                     "maritalStatus": "${form.maritalStatus}",
                     "identityProof": "${form.identityProof}",
                     "identityNumber": "${form.identityNumber}",
-                    "firstOptInOutput": "${form.firstOptInOutput}",
-                    "secoindOptInOutput": "${form.secoindOptInOutput}",
                     "onSelectAction": "add-details-clicked"
                   }
                 },
@@ -1453,106 +1453,10 @@
                     "relationshipWithDeceased": "${form.relationshipWithDeceased}",
                     "maritalStatus": "${form.maritalStatus}",
                     "identityProof": "${form.identityProof}",
-                    "identityNumber": "${form.identityNumber}",
-                    "firstOptInOutput": "${form.firstOptInOutput}",
-                    "secoindOptInOutput": "${form.secoindOptInOutput}",
-                    "onSelectAction": "firstOptIn"
+                    "identityNumber": "${form.identityNumber}"
                   }
                 },
-                "name": "firstOptInOutput",
-                "required": true,
-                "visible": "${data.isOptInVisible}",
-                "label": "నేను (దరఖాస్తుదారు), సమర్పించిన సమాచారం/పత్రాలు వీరితో ఉన్నాయని అంగీకరిస్తున్నాను...",
-                "type": "OptIn"
-              },
-              {
-                "on-click-action": {
-                  "name": "data_exchange",
-                  "payload": {
-                    "rationCardNumber": "${data.rationCardNumber}",
-                    "remarks": "${data.remarks}",
-                    "revenueVillageWard": "${data.revenueVillageWard}",
-                    "isDeceasedFirstName": "${data.isDeceasedFirstName}",
-                    "deacesedMiddleName": "${data.deacesedMiddleName}",
-                    "deceasedLastName": "${data.deceasedLastName}",
-                    "fatherOrHusbandName": "${data.fatherOrHusbandName}",
-                    "dateOfDeath": "${data.dateOfDeath}",
-                    "reasonOfDeath": "${data.reasonOfDeath}",
-                    "occupation": "${data.occupation}",
-                    "adhaarEnrolmentNumber": "${data.adhaarEnrolmentNumber}",
-                    "deathHappendPlace": "${data.deathHappendPlace}",
-                    "whatsAppNumber": "${data.whatsAppNumber}",
-                    "postalOffice": "${data.postalOffice}",
-                    "postalVillage": "${data.postalVillage}",
-                    "isSameAsPermanentAddress": "${data.isSameAsPermanentAddress}",
-                    "presentDoorNoAndStrretName": "${data.presentDoorNoAndStrretName}",
-                    "district": "${data.district}",
-                    "presentMandalAndMunicipality": "${data.presentMandalAndMunicipality}",
-                    "presentVillageOrWardOrSecretariat": "${data.presentVillageOrWardOrSecretariat}",
-                    "pinCode": "${data.pinCode}",
-                    "presentPostalOffice": "${data.presentPostalOffice}",
-                    "presentPostalVillage": "${data.presentPostalVillage}",
-                    "extraDetails": "${data.extraDetails}",
-                    "selectedFamilyMember": "${form.selectedFamilyMember}",
-                    "nameOfFamilyMember": "${form.nameOfFamilyMember}",
-                    "gender": "${form.gender}",
-                    "age": "${form.age}",
-                    "relationshipWithDeceased": "${form.relationshipWithDeceased}",
-                    "maritalStatus": "${form.maritalStatus}",
-                    "identityProof": "${form.identityProof}",
-                    "identityNumber": "${form.identityNumber}",
-                    "firstOptInOutput": "${form.firstOptInOutput}",
-                    "secoindOptInOutput": "${form.secoindOptInOutput}",
-                    "onSelectAction": "secondOptIn"
-                  }
-                },
-                "label": "నేను (అథారిటీని ధృవీకరించండి), పైన ఇవ్వబడిన వివరాలు సరైనవని మరియు...",
-                "name": "secoindOptInOutput",
-                "required": true,
-                "visible": "${data.isOptInVisible}",
-                "type": "OptIn"
-              },
-              {
-                "on-click-action": {
-                  "name": "complete",
-                  "payload": {
-                    "rationCardNumber": "${data.rationCardNumber}",
-                    "remarks": "${data.remarks}",
-                    "revenueVillageWard": "${data.revenueVillageWard}",
-                    "isDeceasedFirstName": "${data.isDeceasedFirstName}",
-                    "deacesedMiddleName": "${data.deacesedMiddleName}",
-                    "deceasedLastName": "${data.deceasedLastName}",
-                    "fatherOrHusbandName": "${data.fatherOrHusbandName}",
-                    "dateOfDeath": "${data.dateOfDeath}",
-                    "reasonOfDeath": "${data.reasonOfDeath}",
-                    "occupation": "${data.occupation}",
-                    "adhaarEnrolmentNumber": "${data.adhaarEnrolmentNumber}",
-                    "deathHappendPlace": "${data.deathHappendPlace}",
-                    "whatsAppNumber": "${data.whatsAppNumber}",
-                    "postalOffice": "${data.postalOffice}",
-                    "postalVillage": "${data.postalVillage}",
-                    "isSameAsPermanentAddress": "${data.isSameAsPermanentAddress}",
-                    "presentDoorNoAndStrretName": "${data.presentDoorNoAndStrretName}",
-                    "district": "${data.district}",
-                    "presentMandalAndMunicipality": "${data.presentMandalAndMunicipality}",
-                    "presentVillageOrWardOrSecretariat": "${data.presentVillageOrWardOrSecretariat}",
-                    "pinCode": "${data.pinCode}",
-                    "presentPostalOffice": "${data.presentPostalOffice}",
-                    "presentPostalVillage": "${data.presentPostalVillage}",
-                    "extraDetails": "${data.extraDetails}",
-                    "selectedFamilyMember": "${form.selectedFamilyMember}",
-                    "nameOfFamilyMember": "${form.nameOfFamilyMember}",
-                    "gender": "${form.gender}",
-                    "age": "${form.age}",
-                    "relationshipWithDeceased": "${form.relationshipWithDeceased}",
-                    "maritalStatus": "${form.maritalStatus}",
-                    "identityProof": "${form.identityProof}",
-                    "identityNumber": "${form.identityNumber}",
-                    "firstOptInOutput": "${form.firstOptInOutput}",
-                    "secoindOptInOutput": "${form.secoindOptInOutput}"
-                  }
-                },
-                "label": "సమర్పించండి",
+                "label": "తదుపరి",
                 "enabled": "${data.isSubmitEnabled}",
                 "type": "Footer"
               }
@@ -1570,8 +1474,43 @@
             }
           }
         ]
+      }
+    },
+    {
+      "data": {
+        "declarationContent": {
+          "type": "string",
+          "__example__": "I (Applicant), agree that the information/documents submitted is with my consent and can be verified. * make this message short \\n I (Applicant), agree that the information/documents submitted is with my consent and can be verified. * make this message short"
+        }
       },
-      "terminal": true
+      "id": "DECLARATION",
+      "title": "డిక్లరేషన్",
+      "layout": {
+        "type": "SingleColumnLayout",
+        "children": [
+          {
+            "type": "Form",
+            "name": "form",
+            "children": [
+              {
+                "text": "${data.declarationContent}",
+                "type": "TextBody"
+              }
+            ],
+            "init-values": {
+              "whatsAppNumber": "${data.initWhatsAppNumber}",
+              "presentDoorNoAndStrretName": "${data.initDoorAndStreetNam}",
+              "nameOfFamilyMember": "${data.familyMemberNameInitValue}",
+              "gender": "${data.genderInitValue}",
+              "age": "${data.ageInitValue}",
+              "relationshipWithDeceased": "${data.relationWithDeceasedInitValue}",
+              "maritalStatus": "${data.maritalStatusInitValue}",
+              "identityProof": "${data.identityProofInitValue}",
+              "identityNumber": "${data.identityNumberInitValue}"
+            }
+          }
+        ]
+      }
     },
     {
       "data": {
@@ -1609,14 +1548,6 @@
         "identityNumber": {
           "type": "string",
           "__example__": ""
-        },
-        "firstOptInOutput": {
-          "type": "boolean",
-          "__example__": false
-        },
-        "secoindOptInOutput": {
-          "type": "boolean",
-          "__example__": false
         },
         "rationCardNumber": {
           "type": "string",
@@ -1717,13 +1648,25 @@
           "type": "string",
           "__example__": ""
         },
-        "declarationContent": {
+        "documentUploadTextBody": {
           "type": "string",
-          "__example__": "I (Applicant), agree that the information/documents submitted is with my consent and can be verified. * make this message short \\n I (Applicant), agree that the information/documents submitted is with my consent and can be verified. * make this message short"
+          "__example__": "documentUploadTextBody"
+        },
+        "isFooterEnabled": {
+          "type": "boolean",
+          "__example__": false
+        },
+        "isOptInVisible": {
+          "type": "boolean",
+          "__example__": false
+        },
+        "currentUpload": {
+          "type": "string",
+          "__example__": "applicationForm"
         }
       },
-      "id": "DECLARATION",
-      "title": "డిక్లరేషన్",
+      "id": "DOCUMENT_UPLOAD",
+      "title": "డాక్యుమెంట్ అప్‌లోడ్",
       "layout": {
         "type": "SingleColumnLayout",
         "children": [
@@ -1732,8 +1675,200 @@
             "name": "form",
             "children": [
               {
-                "text": "${data.declarationContent}",
+                "text": "${data.documentUploadTextBody}",
                 "type": "TextBody"
+              },
+              {
+                "type": "Switch",
+                "value": "${data.currentUpload}",
+                "cases": {
+                  "applicationForm": [
+                    {
+                      "type": "DocumentPicker",
+                      "name": "applicationForm",
+                      "label": "దరఖాస్తు ఫారం",
+                      "min-uploaded-documents": 1,
+                      "max-uploaded-documents": 1,
+                      "description": "దయచేసి మీ దరఖాస్తు ఫారమ్‌ను అప్‌లోడ్ చేయండి.  (గమనిక: PDF ఆకృతిలో మాత్రమే, గరిష్ట పరిమాణం 1MB.)",
+                      "max-file-size-kb": 1000,
+                      "allowed-mime-types": [
+                        "application/pdf"
+                      ]
+                    },
+                    {
+                      "type": "EmbeddedLink",
+                      "text": "అప్‌లోడ్ చేయండి",
+                      "on-click-action": {
+                        "name": "data_exchange",
+                        "payload": {
+                          "applicationForm": "${form.applicationForm}",
+                          "current_selected": "applicationForm"
+                        }
+                      }
+                    }
+                  ],
+                  "affidavit": [
+                    {
+                      "type": "DocumentPicker",
+                      "name": "affidavit",
+                      "label": "నోటరీ చేయబడిన అఫిడవిట్",
+                      "min-uploaded-documents": 1,
+                      "max-uploaded-documents": 1,
+                      "description": "దయచేసి పేరు, వయస్సు మరియు మరణించిన వారితో సంబంధం ఉన్న నోటరీ చేయబడిన అఫిడవిట్‌ను అప్‌లోడ్ చేయండి. (గమనిక: PDF ఆకృతిలో మాత్రమే, గరిష్ట పరిమాణం 1MB.)",
+                      "max-file-size-kb": 1000,
+                      "allowed-mime-types": [
+                        "application/pdf"
+                      ]
+                    },
+                    {
+                      "type": "EmbeddedLink",
+                      "text": "అప్‌లోడ్ చేయండి",
+                      "on-click-action": {
+                        "name": "data_exchange",
+                        "payload": {
+                          "affidavit": "${form.affidavit}",
+                          "current_selected": "affidavit"
+                        }
+                      }
+                    }
+                  ],
+                  "idProof": [
+                    {
+                      "type": "DocumentPicker",
+                      "name": "idProof",
+                      "label": "ID ప్రూఫ్ డాక్యుమెంట్",
+                      "min-uploaded-documents": 1,
+                      "max-uploaded-documents": 1,
+                      "description": "దయచేసి ID రుజువు పత్రాన్ని అప్‌లోడ్ చేయండి. (రేషన్ కార్డ్, ఓటర్ ఐడి, పాస్‌పోర్ట్, పాస్‌బుక్, ఆధార్ మొదలైనవి) దరఖాస్తుదారుకు మరణించిన వారితో ఉన్న సంబంధాన్ని చూపడం. (గమనిక: PDF ఆకృతిలో మాత్రమే, గరిష్ట పరిమాణం 1MB.)",
+                      "max-file-size-kb": 1000,
+                      "allowed-mime-types": [
+                        "application/pdf"
+                      ]
+                    },
+                    {
+                      "type": "EmbeddedLink",
+                      "text": "అప్‌లోడ్ చేయండి",
+                      "on-click-action": {
+                        "name": "data_exchange",
+                        "payload": {
+                          "idProof": "${form.idProof}",
+                          "current_selected": "idProof"
+                        }
+                      }
+                    }
+                  ],
+                  "deathCertificateOrFir": [
+                    {
+                      "type": "DocumentPicker",
+                      "name": "deathCertificateOrFir",
+                      "label": "మరణ ధృవీకరణ పత్రం లేదా FIR",
+                      "min-uploaded-documents": 1,
+                      "max-uploaded-documents": 1,
+                      "description": "దయచేసి మరణ ధృవీకరణ పత్రం లేదా FIR అప్‌లోడ్ చేయండి. (గమనిక: PDF ఆకృతిలో మాత్రమే, గరిష్ట పరిమాణం 1MB",
+                      "max-file-size-kb": 1000,
+                      "allowed-mime-types": [
+                        "application/pdf"
+                      ]
+                    },
+                    {
+                      "type": "EmbeddedLink",
+                      "text": "అప్‌లోడ్ చేయండి",
+                      "on-click-action": {
+                        "name": "data_exchange",
+                        "payload": {
+                          "deathCertificateOrFir": "${form.deathCertificateOrFir}",
+                          "current_selected": "deathCertificateOrFir"
+                        }
+                      }
+                    }
+                  ],
+                  "default": [
+                    {
+                      "type": "TextHeading",
+                      "text": "Invalid Document Upload"
+                    }
+                  ]
+                }
+              },
+              {
+                "on-click-action": {
+                  "name": "navigate",
+                  "next": {
+                    "type": "screen",
+                    "name": "DECLARATION"
+                  },
+                  "payload": {
+                    "declarationContent": "నేను (దరఖాస్తుదారు), సమర్పించిన సమాచారం/పత్రాలు నా సమ్మతితో ఉన్నాయని మరియు ధృవీకరించబడతాయని అంగీకరిస్తున్నాను."
+                  }
+                },
+                "name": "firstOptInOutput",
+                "required": true,
+                "visible": "${data.isOptInVisible}",
+                "label": "నేను (దరఖాస్తుదారు), సమర్పించిన సమాచారం/పత్రాలు వీరితో ఉన్నాయని అంగీకరిస్తున్నాను...",
+                "type": "OptIn"
+              },
+              {
+                "on-click-action": {
+                  "name": "navigate",
+                  "next": {
+                    "type": "screen",
+                    "name": "DECLARATION"
+                  },
+                  "payload": {
+                    "declarationContent": "నేను (అథారిటీని ధృవీకరించండి), పైన ఇచ్చిన వివరాలు సరైనవని మరియు పూర్తి అని దీని ద్వారా ప్రకటిస్తున్నాను. వాస్తవాలను తప్పుగా సూచించినట్లయితే నేను బాధ్యత వహిస్తాను మరియు శిక్షార్హమైన చర్యకు బాధ్యత వహిస్తాను."
+                  }
+                },
+                "label": "నేను (అథారిటీని ధృవీకరించండి), పైన ఇవ్వబడిన వివరాలు సరైనవని మరియు...",
+                "name": "secoindOptInOutput",
+                "required": true,
+                "visible": "${data.isOptInVisible}",
+                "type": "OptIn"
+              },
+              {
+                "on-click-action": {
+                  "name": "complete",
+                  "payload": {
+                    "selectedFamilyMember": "${data.selectedFamilyMember}",
+                    "nameOfFamilyMember": "${data.nameOfFamilyMember}",
+                    "gender": "${data.gender}",
+                    "age": "${data.age}",
+                    "relationshipWithDeceased": "${data.relationshipWithDeceased}",
+                    "maritalStatus": "${data.maritalStatus}",
+                    "identityProof": "${data.identityProof}",
+                    "identityNumber": "${data.identityNumber}",
+                    "rationCardNumber": "${data.rationCardNumber}",
+                    "remarks": "${data.remarks}",
+                    "revenueVillageWard": "${data.revenueVillageWard}",
+                    "isDeceasedFirstName": "${data.isDeceasedFirstName}",
+                    "deacesedMiddleName": "${data.deacesedMiddleName}",
+                    "deceasedLastName": "${data.deceasedLastName}",
+                    "fatherOrHusbandName": "${data.fatherOrHusbandName}",
+                    "dateOfDeath": "${data.dateOfDeath}",
+                    "reasonOfDeath": "${data.reasonOfDeath}",
+                    "occupation": "${data.occupation}",
+                    "adhaarEnrolmentNumber": "${data.adhaarEnrolmentNumber}",
+                    "deathHappendPlace": "${data.deathHappendPlace}",
+                    "whatsAppNumber": "${data.whatsAppNumber}",
+                    "postalOffice": "${data.postalOffice}",
+                    "postalVillage": "${data.postalVillage}",
+                    "isSameAsPermanentAddress": "${data.isSameAsPermanentAddress}",
+                    "presentDoorNoAndStrretName": "${data.presentDoorNoAndStrretName}",
+                    "district": "${data.district}",
+                    "presentMandalAndMunicipality": "${data.presentMandalAndMunicipality}",
+                    "presentVillageOrWardOrSecretariat": "${data.presentVillageOrWardOrSecretariat}",
+                    "pinCode": "${data.pinCode}",
+                    "presentPostalOffice": "${data.presentPostalOffice}",
+                    "presentPostalVillage": "${data.presentPostalVillage}",
+                    "extraDetails": "${data.extraDetails}",
+                    "applicationForm": "${form.applicationForm}",
+                    "affidavit": "${form.affidavit}",
+                    "idProof": "${form.idProof}",
+                    "deathCertificateOrFir": "${form.deathCertificateOrFir}"
+                  }
+                },
+                "label": "సమర్పించండి",
+                "enabled": "${data.isFooterEnabled}",
+                "type": "Footer"
               }
             ],
             "init-values": {
@@ -1749,7 +1884,8 @@
             }
           }
         ]
-      }
+      },
+      "terminal": true
     }
   ]
 }
