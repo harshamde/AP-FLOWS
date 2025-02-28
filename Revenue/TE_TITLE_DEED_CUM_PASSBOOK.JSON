@@ -4,14 +4,17 @@
 		"BASIC_DETAILS": [
 			"APPLICATION_FORM",
 			"TERM_AND_CONDITION",
-			"TERMS_AND_CONDITION"
+			"TERMS_AND_CONDITION",
+			"UPLOAD_DOCUMENT"
 		],
 		"APPLICATION_FORM": [
 			"TERM_AND_CONDITION",
-			"TERMS_AND_CONDITION"
+			"TERMS_AND_CONDITION",
+			"UPLOAD_DOCUMENT"
 		],
 		"TERM_AND_CONDITION": [
-			"TERMS_AND_CONDITION"
+			"TERMS_AND_CONDITION",
+			"UPLOAD_DOCUMENT"
 		],
 		"TERMS_AND_CONDITION": []
 	},
@@ -970,7 +973,8 @@
 										"selectCriteria": "${form.selectCriteria}",
 										"appFormKhata": "${form.appFormKhata}",
 										"termAndConditionFirst": "${form.termAndConditionFirst}",
-										"termAndConditionSecond": "${form.termAndConditionSecond}"
+										"termAndConditionSecond": "${form.termAndConditionSecond}",
+										"onSelectAction": "getDetails"
 									}
 								},
 								"text": "వివరాలను పొంద",
@@ -1061,7 +1065,7 @@
 							},
 							{
 								"on-click-action": {
-									"name": "complete",
+									"name": "data_exchange",
 									"payload": {
 										"whatsAppNumber": "${data.whatsAppNumber}",
 										"postalOffice": "${data.postalOffice}",
@@ -1103,8 +1107,7 @@
 						}
 					}
 				]
-			},
-			"terminal": true
+			}
 		},
 		{
 			"data": {
@@ -1381,6 +1384,277 @@
 					}
 				]
 			}
+		},
+		{
+			"data": {
+				"isOutsidePostalAddress": {
+					"type": "string",
+					"__example__": ""
+				},
+				"doorNoAndStreetName": {
+					"type": "string",
+					"__example__": ""
+				},
+				"outsideState": {
+					"type": "string",
+					"__example__": ""
+				},
+				"outsideDistrict": {
+					"type": "string",
+					"__example__": ""
+				},
+				"outsideMandal": {
+					"type": "string",
+					"__example__": ""
+				},
+				"outsideVillage": {
+					"type": "string",
+					"__example__": ""
+				},
+				"outsidePinCode": {
+					"type": "string",
+					"__example__": ""
+				},
+				"appFormDistrict": {
+					"type": "string",
+					"__example__": ""
+				},
+				"appFormMandal": {
+					"type": "string",
+					"__example__": ""
+				},
+				"appFormVillage": {
+					"type": "string",
+					"__example__": ""
+				},
+				"selectCriteria": {
+					"type": "string",
+					"__example__": ""
+				},
+				"appFormKhata": {
+					"type": "string",
+					"__example__": ""
+				},
+				"termAndConditionFirst": {
+					"type": "boolean",
+					"__example__": false
+				},
+				"termAndConditionSecond": {
+					"type": "boolean",
+					"__example__": false
+				},
+				"whatsAppNumber": {
+					"type": "string",
+					"__example__": ""
+				},
+				"postalOffice": {
+					"type": "string",
+					"__example__": ""
+				},
+				"postalVillage": {
+					"type": "string",
+					"__example__": ""
+				},
+				"isSameAsPermanentAddress": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"__example__": []
+				},
+				"presentDoorNoAndStrretName": {
+					"type": "string",
+					"__example__": ""
+				},
+				"district": {
+					"type": "string",
+					"__example__": ""
+				},
+				"presentMandalAndMunicipality": {
+					"type": "string",
+					"__example__": ""
+				},
+				"presentVillageOrWardOrSecretariat": {
+					"type": "string",
+					"__example__": ""
+				},
+				"pinCode": {
+					"type": "string",
+					"__example__": ""
+				},
+				"presentPostalOffice": {
+					"type": "string",
+					"__example__": ""
+				},
+				"presentPostalVillage": {
+					"type": "string",
+					"__example__": ""
+				},
+				"extraDetails": {
+					"type": "string",
+					"__example__": ""
+				},
+				"isFooterEnabled": {
+					"type": "boolean",
+					"__example__": false
+				},
+				"isOptInVisible": {
+					"type": "boolean",
+					"__example__": false
+				},
+				"currentUpload": {
+					"type": "string",
+					"__example__": "applicationForm"
+				},
+				"documentUploadTextBody": {
+					"type": "string",
+					"__example__": "applicationForm"
+				}
+			},
+			"id": "UPLOAD_DOCUMENT",
+			"title": "Upload Document",
+			"layout": {
+				"type": "SingleColumnLayout",
+				"children": [
+					{
+						"type": "Form",
+						"name": "form",
+						"children": [
+							{
+								"text": "${data.documentUploadTextBody}",
+								"type": "TextBody"
+							},
+							{
+								"type": "Switch",
+								"value": "${data.currentUpload}",
+								"cases": {
+									"passportSizePhoto": [
+										{
+											"type": "PhotoPicker",
+											"name": "passportSizePhoto",
+											"label": "పాస్‌పోర్ట్ సైజు ఫోటో",
+											"description": "దయచేసి మీ ఇటీవలి పాస్‌పోర్ట్ సైజ్ ఫోటోను అప్‌లోడ్ చేయండి.  *గమనిక: jpg/jpeg ఆకృతిలో మాత్రమే*",
+											"min-uploaded-photos": 1,
+											"max-uploaded-photos": 1,
+											"max-file-size-kb": 1000
+										},
+										{
+											"type": "EmbeddedLink",
+											"text": "అప్‌లోడ్ చేయండి",
+											"on-click-action": {
+												"name": "data_exchange",
+												"payload": {
+													"passportSizePhoto": "${form.passportSizePhoto}",
+													"current_selected": "passportSizePhoto"
+												}
+											}
+										}
+									],
+									"signature": [
+										{
+											"type": "PhotoPicker",
+											"name": "signature",
+											"label": "సంతకం",
+											"description": "దయచేసి మీ సంతకాన్ని అప్‌లోడ్ చేయండి. *గమనిక: jpg/jpeg ఆకృతిలో మాత్రమే*",
+											"min-uploaded-photos": 1,
+											"max-uploaded-photos": 1,
+											"max-file-size-kb": 1000
+										},
+										{
+											"type": "EmbeddedLink",
+											"text": "అప్‌లోడ్ చేయండి",
+											"on-click-action": {
+												"name": "data_exchange",
+												"payload": {
+													"signature": "${form.signature}",
+													"current_selected": "signature"
+												}
+											}
+										}
+									],
+									"applicationForm": [
+										{
+											"type": "DocumentPicker",
+											"name": "applicationForm",
+											"label": "దరఖాస్తు ఫారం",
+											"min-uploaded-documents": 1,
+											"max-uploaded-documents": 1,
+											"description": "దయచేసి మీ దరఖాస్తు ఫారమ్‌ను అప్‌లోడ్ చేయండి. *గమనిక: గుర్తింపు పత్రం పి.డి.ఎఫ్ (PDF) రూపంలో మాత్రమే ఉండాలి మరియు పరిమాణం 1MB కంటే తక్కువగా ఉండాలి.*",
+											"max-file-size-kb": 1000,
+											"allowed-mime-types": [
+												"application/pdf"
+											]
+										},
+										{
+											"type": "EmbeddedLink",
+											"text": "అప్‌లోడ్ చేయండి",
+											"on-click-action": {
+												"name": "data_exchange",
+												"payload": {
+													"applicationForm": "${form.applicationForm}",
+													"current_selected": "applicationForm"
+												}
+											}
+										}
+									],
+									"default": [
+										{
+											"type": "TextHeading",
+											"text": "చెల్లని పత్రం అప్‌లోడ్"
+										}
+									]
+								}
+							},
+							{
+								"on-click-action": {
+									"name": "complete",
+									"payload": {
+										"isOutsidePostalAddress": "${data.isOutsidePostalAddress}",
+										"doorNoAndStreetName": "${data.doorNoAndStreetName}",
+										"outsideState": "${data.outsideState}",
+										"outsideDistrict": "${data.outsideDistrict}",
+										"outsideMandal": "${data.outsideMandal}",
+										"outsideVillage": "${data.outsideVillage}",
+										"outsidePinCode": "${data.outsidePinCode}",
+										"appFormDistrict": "${data.appFormDistrict}",
+										"appFormMandal": "${data.appFormMandal}",
+										"appFormVillage": "${data.appFormVillage}",
+										"selectCriteria": "${data.selectCriteria}",
+										"appFormKhata": "${data.appFormKhata}",
+										"termAndConditionFirst": "${data.termAndConditionFirst}",
+										"termAndConditionSecond": "${data.termAndConditionSecond}",
+										"whatsAppNumber": "${data.whatsAppNumber}",
+										"postalOffice": "${data.postalOffice}",
+										"postalVillage": "${data.postalVillage}",
+										"isSameAsPermanentAddress": "${data.isSameAsPermanentAddress}",
+										"presentDoorNoAndStrretName": "${data.presentDoorNoAndStrretName}",
+										"district": "${data.district}",
+										"presentMandalAndMunicipality": "${data.presentMandalAndMunicipality}",
+										"presentVillageOrWardOrSecretariat": "${data.presentVillageOrWardOrSecretariat}",
+										"pinCode": "${data.pinCode}",
+										"presentPostalOffice": "${data.presentPostalOffice}",
+										"presentPostalVillage": "${data.presentPostalVillage}",
+										"extraDetails": "${data.extraDetails}",
+										"document": "${form.document}",
+										"passportSizePhoto": "${form.passportSizePhoto}",
+										"signature": "${form.signature}",
+										"applicationForm": "${form.applicationForm}"
+									}
+								},
+								"label": "సమర్పించండి",
+								"enabled": "${data.isFooterEnabled}",
+								"type": "Footer"
+							}
+						],
+						"init-values": {
+							"whatsAppNumber": "${data.initWhatsAppNumber}",
+							"presentDoorNoAndStrretName": "${data.initDoorAndStreetNam}",
+							"selectCriteria": "${data.initValueselectCriteria}"
+						}
+					}
+				]
+			},
+			"terminal": true
 		}
 	]
 }
