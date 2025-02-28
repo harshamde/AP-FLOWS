@@ -1512,7 +1512,7 @@
 				}
 			},
 			"id": "UPLOAD_DOCUMENT",
-			"title": "Upload Document",
+			"title": "పత్రాన్ని అప్‌లోడ్ చేయండి",
 			"layout": {
 				"type": "SingleColumnLayout",
 				"children": [
