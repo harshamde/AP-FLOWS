@@ -3,12 +3,16 @@
   "routing_model": {
     "WELCOME": [
       "INFORMANT_DETAILS",
-      "SERVICE_DETAILS"
+      "SERVICE_DETAILS",
+      "UPLOAD_DOCUMENT"
     ],
     "INFORMANT_DETAILS": [
-      "SERVICE_DETAILS"
+      "SERVICE_DETAILS",
+      "UPLOAD_DOCUMENT"
     ],
-    "SERVICE_DETAILS": []
+    "SERVICE_DETAILS": [
+      "UPLOAD_DOCUMENT"
+    ]
   },
   "data_api_version": "3.0",
   "screens": [
@@ -936,7 +940,7 @@
               },
               {
                 "on-click-action": {
-                  "name": "complete",
+                  "name": "data_exchange",
                   "payload": {
                     "informantName": "${data.informantName}",
                     "informantSurname": "${data.informantSurname}",
@@ -971,6 +975,296 @@
                 },
                 "label": "సమర్పించండి",
                 "type": "Footer"
+              }
+            ],
+            "init-values": {
+              "name": "${data.nameInitValue}",
+              "surname": "${data.surnameInitValue}",
+              "state": "Andhrapradesh",
+              "pinCode": "${data.pinCodeInitValue}",
+              "mobileNumber": "${data.mobileNoInitValue}",
+              "phoneNo": ""
+            }
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "missingDocument": {
+          "type": "string",
+          "__example__": ""
+        },
+        "districtCommissionerate": {
+          "type": "string",
+          "__example__": ""
+        },
+        "policeStationJurisdictionKnown": {
+          "type": "string",
+          "__example__": ""
+        },
+        "policeStation": {
+          "type": "string",
+          "__example__": ""
+        },
+        "nearestLandmarkArea": {
+          "type": "string",
+          "__example__": ""
+        },
+        "reasonForMissingDocument": {
+          "type": "string",
+          "__example__": ""
+        },
+        "idProofToBeUploaded": {
+          "type": "string",
+          "__example__": ""
+        },
+        "addressProofToBeUploaded": {
+          "type": "string",
+          "__example__": ""
+        },
+        "deliveryType": {
+          "type": "string",
+          "__example__": ""
+        },
+        "informantName": {
+          "type": "string",
+          "__example__": ""
+        },
+        "informantSurname": {
+          "type": "string",
+          "__example__": ""
+        },
+        "relationshipWithApplicant": {
+          "type": "string",
+          "__example__": ""
+        },
+        "name": {
+          "type": "string",
+          "__example__": ""
+        },
+        "surname": {
+          "type": "string",
+          "__example__": ""
+        },
+        "gender": {
+          "type": "string",
+          "__example__": ""
+        },
+        "age": {
+          "type": "string",
+          "__example__": ""
+        },
+        "occupation": {
+          "type": "string",
+          "__example__": ""
+        },
+        "addressLine1": {
+          "type": "string",
+          "__example__": ""
+        },
+        "addressLine2": {
+          "type": "string",
+          "__example__": ""
+        },
+        "state": {
+          "type": "string",
+          "__example__": ""
+        },
+        "district": {
+          "type": "string",
+          "__example__": ""
+        },
+        "mandal": {
+          "type": "string",
+          "__example__": ""
+        },
+        "village": {
+          "type": "string",
+          "__example__": ""
+        },
+        "city": {
+          "type": "string",
+          "__example__": ""
+        },
+        "pinCode": {
+          "type": "string",
+          "__example__": ""
+        },
+        "mobileNumber": {
+          "type": "string",
+          "__example__": ""
+        },
+        "phoneNo": {
+          "type": "string",
+          "__example__": ""
+        },
+        "emailId": {
+          "type": "string",
+          "__example__": ""
+        },
+        "extraDetails": {
+          "type": "string",
+          "__example__": ""
+        },
+        "isFooterEnabled": {
+          "type": "boolean",
+          "__example__": false
+        },
+        "isOptInVisible": {
+          "type": "boolean",
+          "__example__": false
+        },
+        "currentUpload": {
+          "type": "string",
+          "__example__": "applicationForm"
+        },
+        "documentUploadTextBody": {
+          "type": "string",
+          "__example__": "applicationForm"
+        }
+      },
+      "id": "UPLOAD_DOCUMENT",
+      "title": "పత్రాన్ని ఎక్కించండి",
+      "layout": {
+        "type": "SingleColumnLayout",
+        "children": [
+          {
+            "type": "Form",
+            "name": "form",
+            "children": [
+              {
+                "text": "${data.documentUploadTextBody}",
+                "type": "TextBody"
+              },
+              {
+                "type": "Switch",
+                "value": "${data.currentUpload}",
+                "cases": {
+                  "addressProof": [
+                    {
+                      "type": "DocumentPicker",
+                      "name": "addressProof",
+                      "label": "చిరునామా రుజువు",
+                      "min-uploaded-documents": 1,
+                      "max-uploaded-documents": 1,
+                      "description": "చిరునామా రుజువును అప్‌లోడ్ చేయండి. (గమనిక: PDF ఆకృతిలో మాత్రమే, గరిష్ట పరిమాణం 1MB.)",
+                      "max-file-size-kb": 1000,
+                      "allowed-mime-types": [
+                        "application/pdf"
+                      ]
+                    },
+                    {
+                      "type": "EmbeddedLink",
+                      "text": "అప్‌లోడ్ చేయండి",
+                      "on-click-action": {
+                        "name": "data_exchange",
+                        "payload": {
+                          "addressProof": "${form.addressProof}",
+                          "current_selected": "addressProof"
+                        }
+                      }
+                    }
+                  ],
+                  "idProof": [
+                    {
+                      "type": "DocumentPicker",
+                      "name": "idProof",
+                      "label": "ఐడి ప్రూఫ్",
+                      "min-uploaded-documents": 1,
+                      "max-uploaded-documents": 1,
+                      "description": "దయచేసి ID రుజువును అప్‌లోడ్ చేయండి. (గమనిక: PDF ఆకృతిలో మాత్రమే, గరిష్ట పరిమాణం 1MB.)",
+                      "max-file-size-kb": 1000,
+                      "allowed-mime-types": [
+                        "application/pdf"
+                      ]
+                    },
+                    {
+                      "type": "EmbeddedLink",
+                      "text": "అప్‌లోడ్ చేయండి",
+                      "on-click-action": {
+                        "name": "data_exchange",
+                        "payload": {
+                          "idProof": "${form.idProof}",
+                          "current_selected": "idProof"
+                        }
+                      }
+                    }
+                  ],
+                  "petitionDocument": [
+                    {
+                      "type": "DocumentPicker",
+                      "name": "petitionDocument",
+                      "label": "పిటిషన్ పత్రం",
+                      "min-uploaded-documents": 1,
+                      "max-uploaded-documents": 1,
+                      "description": "పిటిషన్ పత్రాన్ని అప్‌లోడ్ చేయండి. (గమనిక: PDF ఆకృతిలో మాత్రమే, గరిష్ట పరిమాణం 1MB.)",
+                      "max-file-size-kb": 1000,
+                      "allowed-mime-types": [
+                        "application/pdf"
+                      ]
+                    },
+                    {
+                      "type": "EmbeddedLink",
+                      "text": "అప్‌లోడ్ చేయండి",
+                      "on-click-action": {
+                        "name": "data_exchange",
+                        "payload": {
+                          "petitionDocument": "${form.petitionDocument}",
+                          "current_selected": "petitionDocument"
+                        }
+                      }
+                    }
+                  ],
+                  "default": [
+                    {
+                      "type": "TextHeading",
+                      "text": "చెల్లని పత్రం అప్‌లోడ్"
+                    }
+                  ]
+                }
+              },
+              {
+                "on-click-action": {
+                  "name": "complete",
+                  "payload": {
+                    "missingDocument": "${data.missingDocument}",
+                    "districtCommissionerate": "${data.districtCommissionerate}",
+                    "policeStationJurisdictionKnown": "${data.policeStationJurisdictionKnown}",
+                    "policeStation": "${data.policeStation}",
+                    "nearestLandmarkArea": "${data.nearestLandmarkArea}",
+                    "reasonForMissingDocument": "${data.reasonForMissingDocument}",
+                    "idProofToBeUploaded": "${data.idProofToBeUploaded}",
+                    "addressProofToBeUploaded": "${data.addressProofToBeUploaded}",
+                    "deliveryType": "${data.deliveryType}",
+                    "informantName": "${data.informantName}",
+                    "informantSurname": "${data.informantSurname}",
+                    "relationshipWithApplicant": "${data.relationshipWithApplicant}",
+                    "name": "${data.name}",
+                    "surname": "${data.surname}",
+                    "gender": "${data.gender}",
+                    "age": "${data.age}",
+                    "occupation": "${data.occupation}",
+                    "addressLine1": "${data.addressLine1}",
+                    "addressLine2": "${data.addressLine2}",
+                    "state": "${data.state}",
+                    "district": "${data.district}",
+                    "mandal": "${data.mandal}",
+                    "village": "${data.village}",
+                    "city": "${data.city}",
+                    "pinCode": "${data.pinCode}",
+                    "mobileNumber": "${data.mobileNumber}",
+                    "phoneNo": "${data.phoneNo}",
+                    "emailId": "${data.emailId}",
+                    "extraDetails": "${data.extraDetails}",
+                    "addressProof": "${form.addressProof}",
+                    "idProof": "${form.idProof}",
+                    "petitionDocument": "${form.petitionDocument}"
+                  }
+                },
+                "label": "Submit",
+                "type": "Footer",
+                "enabled": "${data.isFooterEnabled}"
               }
             ],
             "init-values": {
